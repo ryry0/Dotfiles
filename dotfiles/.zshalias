@@ -65,6 +65,7 @@ alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
 alias gdb='gdb -tui'
 alias remake='make re'
+alias makerr='make 2>&1 | less'
 alias gch='git checkout'
 alias gb='git branch'
 
