@@ -1,0 +1,8 @@
+xset +fp /usr/share/fonts/local
+xset fp rehash
+xrdb -merge ~/.Xresources
+dropboxd &
+xbacklight -set 0
+eval $(cat ~/.fehbg)
+exec spectrwm
+

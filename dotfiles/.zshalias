@@ -1,0 +1,124 @@
+# Path to your oh-my-zsh configuration.
+#ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="ryry"
+
+#the following fixes the libswmhackso.0.0 cannot be preloaded problem
+LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
+prompt off 
+autoload -U colors && colors
+source /home/ryan/Programming/Scripts_and_Configurations/ryry.zsh-theme
+
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+	exec startx &> /dev/null
+
+elif [[ $(tty) = /dev/tty2 ]] ; then
+	exec tmux 
+
+elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
+	exec tmux -2
+fi
+
+
+#zsh vim mode 
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
+
+#/home/ryan/Programming/Scripts_and_Configurations/base16-default.dark.sh
+#export LS_COLORS='di=34:fi=0:ln=36:pi=1;31:so=35:bd=33:cd=31:or=31:ex=32'
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sudo='nocorrect sudo '
+alias vi='vim' 
+alias pacman='sudo pacman'
+alias cls='clear'
+alias mpcli='mplayer -vo fbdev2 -zoom -dr'
+alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null' 
+alias pandora='pianobar'
+alias lock='cmatrix -sabl -u5 -C cyan && vlock'
+alias shutdown='sudo shutdown'
+alias reboot='sudo reboot'
+alias spv='tmux splitw -h ' 
+alias sph='tmux splitw -v '
+alias dim='xbacklight -dec 20'
+alias bright='xbacklight -inc 20'
+alias copy='rsync -aP'
+alias rdpalienpc='rdesktop 192.168.1.116 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote'
+alias dropbox='python2 ~/Dropbox/Programming/Scripts_and_Configurations/dropbox.py'
+alias :q='exit'
+alias q='exit'
+alias reconnect='sudo systemctl restart netctl-auto@wlan0.service'
+alias dimmest='sudo xbacklight -set 0'
+alias pdf='zathura'
+alias brightest='sudo xbacklight -set 100'
+alias gchat='freetalk'
+alias gmail='links "mail.google.com/mail/?ui=html"'
+alias externmonitor='xrandr --auto --output LVDS1 --off'
+alias systemctl='sudo systemctl'
+alias moviemode='xset -dpms; xset s off'
+alias endmoviemode='xser dpms; xset s on'
+alias gdb='gdb -tui'
+alias remake='make re'
+alias gch='git checkout'
+alias gb='git branch'
+
+#git aliases
+alias gs='git status'
+alias gl='git log'
+alias glo='git log --oneline'
+alias gls='git log --pretty=short'
+alias gc='git commit'
+alias ga='git add'
+
+function cl () {
+	cd "$@" && ls --color=auto
+	}
+
+function ra {
+    tempfile='/tmp/chosendir'
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+#plugins=()
+
+#source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+# Compatible with ranger 1.4.2 through 1.6.*
+#
+# Automatically change the directory in bash after closing ranger
+#
+# This is a bash function for .bashrc to automatically change the directory to
+# the last visited one after ranger quits.
+# To undo the effect of this function, you can type "cd -" to return to the
+# original directory.
