@@ -23,6 +23,8 @@ autocmd FileType c,cpp set nospell | set expandtab | set tabstop=2 | set shiftwi
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell
 
+"checks for trailing whitespace 
+match ErrorMsg '\s\+$'
 
 set formatoptions=l
 set lbr
