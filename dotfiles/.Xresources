@@ -37,6 +37,6 @@ URxvt*cursorColor2:       #151515
 URxvt*transparent: true
 URxvt*shading: 20
 !5
-
-URxvt.scrollBar: false 
+URxvt.scrollBar: false
 URxvt*font: xft:terminus:size=10:antialias=true
+xterm*faceName:         Terminus:pixelsize=15
