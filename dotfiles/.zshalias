@@ -35,16 +35,16 @@ bindkey '^R' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sudo='nocorrect sudo '
-alias vi='vim' 
+alias vi='vim'
 alias pacman='sudo pacman'
 alias cls='clear'
 alias mpcli='mplayer -vo fbdev2 -zoom -dr'
-alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null' 
+alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
 alias pandora='pianobar'
 alias lock='cmatrix -sabl -u5 -C cyan && vlock'
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
-alias spv='tmux splitw -h ' 
+alias spv='tmux splitw -h '
 alias sph='tmux splitw -v '
 alias dim='xbacklight -dec 20'
 alias bright='xbacklight -inc 20'
@@ -64,12 +64,15 @@ alias systemctl='sudo systemctl'
 alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
 alias gdb='gdb -tui'
+alias pd='popd'
+
+#make aliases
 alias remake='make re'
 alias makerr='make 2>&1 | less'
-alias gch='git checkout'
-alias gb='git branch'
 
 #git aliases
+alias gch='git checkout'
+alias gb='git branch'
 alias gs='git status'
 alias gl='git log'
 alias glo='git log --oneline'
