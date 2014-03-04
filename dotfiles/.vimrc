@@ -18,13 +18,12 @@ set spelllang=en
 
 "tab styling options
 "set c file styling
-autocmd FileType c,cpp set nospell | set expandtab | set tabstop=2 | set shiftwidth=2
+autocmd FileType c,cpp set nospell | set expandtab | set tabstop=2 | set shiftwidth=2 | match ErrorMsg '\s\+$'
 
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell
 
-"checks for trailing whitespace 
-match ErrorMsg '\s\+$'
+"checks for trailing whitespace
 
 set formatoptions=l
 set lbr
