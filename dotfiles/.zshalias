@@ -17,10 +17,10 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
 	exec startx &> /dev/null
 
 elif [[ $(tty) = /dev/tty2 ]] ; then
-	exec tmux 
+	tmux 
 
 elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
-	exec tmux -2
+	tmux -2
 fi
 
 
