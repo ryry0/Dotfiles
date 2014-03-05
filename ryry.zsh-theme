@@ -82,12 +82,12 @@ function check_tmux()
 {
 	if [ $TERM = "linux" ] ; then
 		echo "[%{$fg[cyan]%}$(wpa_cli -i wlp2s0 status | sed -n 's/^ssid=//p')%{$reset_color%}]$(battery_prompt)[%{$fg[blue]%}%W%{$reset_color%}][%{$fg[blue]%}%t%{$reset_color%}][%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
-	else 
-		echo "[%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
+	#else 
+		#echo "[%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
 	fi
 }
 
-vim_ins_mode="[%{$fg[cyan]%}INS%{$reset_color%}]"
+vim_ins_mode="%{$fg[white]%}%{$reset_color%}"
 vim_cmd_mode="[%{$fg[green]%}CMD%{$reset_color%}]"
 vim_mode=$vim_ins_mode
 
