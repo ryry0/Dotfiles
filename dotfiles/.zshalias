@@ -80,9 +80,12 @@ alias gls='git log --pretty=short'
 alias gc='git commit'
 alias ga='git add'
 
-function cl () {
-	cd "$@" && ls --color=auto
-	}
+function cd () {
+	builtin cd "$@" && ls --color=auto
+}
+#function cl () {
+#	cd "$@" && ls --color=auto
+#	}
 
 function ra {
     tempfile='/tmp/chosendir'
