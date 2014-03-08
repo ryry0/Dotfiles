@@ -52,8 +52,8 @@ set grepprg=grep\ -nH\ $*
 "sets intuitive word wrapped line movement
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
 vnoremap k gk
-vnoremap j g
 
 "sets the colon to semicolon
 nnoremap ; :
