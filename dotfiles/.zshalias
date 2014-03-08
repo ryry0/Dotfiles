@@ -37,7 +37,7 @@ bindkey '^R' history-incremental-search-backward
 alias sudo='nocorrect sudo '
 alias vi='vim'
 alias pacman='sudo pacman'
-alias cls='clear'
+alias cls='clear && ls --color=auto'
 alias mpcli='mplayer -vo fbdev2 -zoom -dr'
 alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
 alias pandora='pianobar'
