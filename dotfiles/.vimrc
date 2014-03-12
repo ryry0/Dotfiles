@@ -22,7 +22,7 @@ set spelllang=en
 "tabs are 2 spaces
 "trailing whitespace is highlighted
 "no indent of namespaces
-autocmd FileType c,cpp set nospell | set expandtab | set tabstop=2 | set shiftwidth=2 | match ErrorMsg '\s\+$' | set cino=N-s
+autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2 | set tabstop=2 | set shiftwidth=2 | match ErrorMsg '\s\+$' | set cino=N-s
 
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell
