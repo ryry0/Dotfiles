@@ -62,9 +62,9 @@ endif
   	"hi Cursor                                            ctermbg=CursorColor
   	"hi CursorLine                                        ctermbg=CursorLColor
   	hi LineNr	ctermfg=darkcyan ctermbg=black
-  	hi Search                                            ctermbg=LightCyan
+  	hi Search                     ctermbg=LightCyan
   	"hi VertSplit                 ctermfg=SplitFG.      ctermbg=SplitBG
-	hi Visual                                            ctermbg=LightCyan
+	hi Visual                     ctermfg=black         ctermbg=LightCyan
   	"hi Folded                    ctermfg=FoldFG.       ctermbg='.FoldBG
   	"hi FoldColumn                ctermfg=FoldFG.   		ctermbg='.FoldBG
   	"hi Directory                 ctermfg=LightGreen
