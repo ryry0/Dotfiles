@@ -59,11 +59,16 @@ vnoremap k gk
 nnoremap ; :
 nnoremap : ;
 nnoremap , ;
+
+"do the same thing in visual mode
+vnoremap ; :
+vnoremap : ;
 " Also, this installs to /usr/share/vim/vimfiles, which may not be in
 " your runtime path (RTP). Be sure to add it too, e.g:
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 ":helptags ~/.vim/doc
 
+let mapleader=" "
 "clears the highlight from the search
 nmap <silent> <leader><space> ;nohlsearch <CR>
 
@@ -80,6 +85,14 @@ nnoremap <f12> :!ctags -R <cr>
 noremap <leader>y "+y
 noremap <leader>Y "+Y
 noremap <leader>p "+p
+
+"opens previous buffered file.
+nmap <leader>e ;e#<CR>
+nmap <leader>b ;buffers<CR>
+
+"scrolls up in my weird way
+nmap <leader>d Lzz
+nmap <leader>u Hzz
 
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
