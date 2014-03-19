@@ -5,6 +5,6 @@ dropboxd &
 xbacklight -set 0
 eval $(cat ~/.fehbg)
 syndaemon -k -i 1 &
-unclutter &
+unclutter -noevents &
 exec spectrwm
 
