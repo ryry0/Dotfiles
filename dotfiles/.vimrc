@@ -7,7 +7,7 @@ set showmatch
 set hlsearch
 set showcmd
 
-set nu
+set relativenumber | set number
 set nocompatible
 set hidden
 set cursorline
@@ -88,7 +88,11 @@ noremap <leader>p "+p
 
 "opens previous buffered file.
 nmap <leader>e ;e#<CR>
-nmap <leader>b ;buffers<CR>
+
+"jumps to end of line in command mode
+nmap <leader>f $
+"jumps to beginning of line in command mode
+nmap <leader>b __
 
 "scrolls up in my weird way
 nmap <leader>d Lzz
