@@ -5,7 +5,6 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-set showcmd
 
 set relativenumber | set number
 set nocompatible
@@ -86,6 +85,9 @@ noremap <leader>y "+y
 noremap <leader>Y "+Y
 noremap <leader>p "+p
 
+"allows you to open command line history using q;
+nnoremap q; q:
+
 "opens previous buffered file.
 nmap <leader>e ;e#<CR>
 
@@ -152,3 +154,4 @@ if has('statusline')
 		set titlestring=%t%(\ [%R%M]%)
 	endif
 endif
+set showcmd
