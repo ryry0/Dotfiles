@@ -65,10 +65,11 @@ alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
 alias gdb='gdb -tui -q'
 alias pd='popd'
+alias fgrep='fgrep --color=always'
 
 #make aliases
 alias remake='make re'
-alias makerr='make 2>&1 | less'
+alias makerr='make 2>&1 | less -r'
 
 #git aliases
 alias gch='git checkout'
@@ -79,6 +80,8 @@ alias glo='git log --oneline'
 alias gls='git log --pretty=short'
 alias gc='git commit'
 alias ga='git add'
+alias gd='git diff'
+alias gp='git push'
 
 function cd () {
 	builtin cd "$@" && ls --color=auto
