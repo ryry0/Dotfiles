@@ -79,7 +79,10 @@ nmap <silent> <leader>o o<ESC>
 nmap <silent> <leader>O O<ESC>
 
 inoremap jj <ESC>
+"ctags and ctags navigation
 nnoremap <f12> :!ctags -R <cr>
+nnoremap <leader>] <C-]>
+nnoremap <leader>t <C-t>
 
 noremap <leader>y "+y
 noremap <leader>Y "+Y
@@ -87,6 +90,7 @@ noremap <leader>p "+p
 
 "allows you to open command line history using q;
 nnoremap q; q:
+noremap <leader>q q:
 
 "opens previous buffered file.
 nmap <leader>e ;e#<CR>
