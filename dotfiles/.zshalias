@@ -83,9 +83,19 @@ alias ga='git add'
 alias gd='git diff'
 alias gp='git push'
 
+function fcd () {
+	FOUND=$(find . -name "$@" | sed 1q)
+	if [[ -d $FOUND ]]; then
+		builtin cd $FOUND
+	elif [[ -f $FOUND ]]; then
+		builtin cd "$(dirname $FOUND)"
+	fi
+}
+
 function cd () {
 	builtin cd "$@" && ls --color=auto
 }
+
 #function cl () {
 #	cd "$@" && ls --color=auto
 #	}
