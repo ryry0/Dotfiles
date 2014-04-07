@@ -15,14 +15,6 @@ set cursorline
 "use z= to use spellcheck
 set spelllang=en
 
-"tab styling options
-"set c file styling
-"no spell check
-"tabs are 2 spaces
-"trailing whitespace is highlighted
-"no indent of namespaces
-autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2 | set tabstop=2 | set shiftwidth=2 | match ErrorMsg '\s\+$' | set cino=N-s
-
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell
 
@@ -159,3 +151,14 @@ if has('statusline')
 	endif
 endif
 set showcmd
+
+"tab styling options
+"set c file styling
+"no spell check
+"tabs are 2 spaces
+"trailing whitespace is highlighted
+"no indent of namespaces
+autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2 
+			\| set tabstop=2 | set shiftwidth=2 
+			\| match ErrorMsg '\s\+$' | set cino=N-s 
+			\| set formatoptions+=t | set textwidth=80 
