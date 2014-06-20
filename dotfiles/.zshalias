@@ -60,13 +60,14 @@ alias brightest='sudo xbacklight -set 100'
 alias gchat='freetalk'
 alias gmail='links "mail.google.com/mail/?ui=html"'
 alias externmonitor='xrandr --auto --output LVDS1 --off'
-alias dualmonitor='xrandr --output LVDS1 --auto --output --VGA1 --auto --above LVDS1'
+alias dualmonitor='xrandr --output LVDS1 --auto --output VGA1 --auto --above LVDS1'
 alias systemctl='sudo systemctl'
 alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
 alias gdb='gdb -tui -q'
 alias pd='popd'
 alias fgrep='fgrep --color=always'
+alias c='ra'
 
 #make aliases
 alias remake='make re'
@@ -85,7 +86,7 @@ alias gd='git diff'
 alias gp='git push'
 
 function fcd () {
-	FOUND=$(find . -name "$@" | sed 1q)
+	FOUND=$(find . -iname "$@" | sed 1q)
 	if [[ -d $FOUND ]]; then
 		builtin cd $FOUND
 	elif [[ -f $FOUND ]]; then
