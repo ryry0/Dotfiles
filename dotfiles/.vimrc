@@ -6,6 +6,11 @@ set incsearch
 set showmatch
 set hlsearch
 
+set mouse=a
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+
+
 set relativenumber | set number
 set nocompatible
 set hidden
@@ -48,12 +53,13 @@ vnoremap k gk
 
 "sets the colon to semicolon
 nnoremap ; :
-nnoremap : ;
+
+"nnoremap : ;
 nnoremap , ;
 
 "do the same thing in visual mode
 vnoremap ; :
-vnoremap : ;
+"vnoremap : ;
 " Also, this installs to /usr/share/vim/vimfiles, which may not be in
 " your runtime path (RTP). Be sure to add it too, e.g:
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
@@ -76,6 +82,9 @@ nnoremap <f12> :!ctags -R <cr>
 nnoremap <leader>] <C-]>
 nnoremap <leader>t <C-t>
 
+"maps leader r to redo
+nnoremap <leader>r <C-r>
+
 noremap <leader>y "+y
 noremap <leader>Y "+Y
 noremap <leader>p "+p
@@ -88,13 +97,16 @@ noremap <leader>q q:
 nmap <leader>e ;e#<CR>
 
 "jumps to end of line in command mode
-nmap <leader>f $
+nmap <leader>l $
 "jumps to beginning of line in command mode
-nmap <leader>b __
+nmap <leader>h __
+
+"clears all trailing whitespaces
+nmap <leader>w :%s/\s\+$// <CR>
 
 "scrolls up in my weird way
-nmap <leader>d Lzz
-nmap <leader>u Hzz
+nmap <leader>j Lzz
+nmap <leader>k Hzz
 
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
@@ -112,6 +124,9 @@ function! NumberToggle()
 endfunc
 
 nnoremap <f5> :call NumberToggle() <cr>
+
+"maps leader n to calling the number toggle.
+nmap <leader>n :call NumberToggle() <cr>
 set background=dark
 colorscheme nucolors
 " Statusline (c) Winterdom
