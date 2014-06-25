@@ -35,6 +35,7 @@ bindkey '^R' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sudo='nocorrect sudo '
+alias ls='ls --color=auto -HF'
 alias vi='vim'
 alias pacman='sudo pacman'
 alias cls='clear && ls --color=auto'
@@ -72,6 +73,13 @@ alias c='ra'
 #make aliases
 alias remake='make re'
 alias makerr='make 2>&1 | less -r'
+alias maek='make'
+alias mkae='make'
+alias meak='make'
+alias amka='make'
+alias akme='make'
+alias amke='make'
+alias mkea='make'
 
 #git aliases
 alias gch='git checkout'
@@ -85,6 +93,15 @@ alias ga='git add'
 alias gd='git diff'
 alias gp='git push'
 
+#suffix aliases
+alias -s tex=vim
+alias -s cpp=vim
+alias -s conf=vim
+alias -s c=vim
+alias -s hpp=vim
+alias -s h=vim
+
+#cd's to the first found folder that matches the argument
 function fcd () {
 	FOUND=$(find . -iname "$@" | sed 1q)
 	if [[ -d $FOUND ]]; then
@@ -102,6 +119,7 @@ function cd () {
 #	cd "$@" && ls --color=auto
 #	}
 
+#uses ranger, then cd's to whatever directory you left off in
 function ra {
     tempfile='/tmp/chosendir'
     /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -112,6 +130,16 @@ function ra {
     rm -f -- "$tempfile"
 }
 
+function keep () {
+	kept=()
+	kept=( $~* )
+	if [[ ! -t 0 ]]; then
+		while read line; do
+			kept+=( $line )
+		done
+	fi
+	print -Rc - $kept
+}
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
