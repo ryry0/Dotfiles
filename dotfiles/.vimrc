@@ -92,6 +92,7 @@ noremap <leader>p "+p
 "allows you to open command line history using q;
 nnoremap q; q:
 noremap <leader>q q:
+noremap <leader>; q:
 
 "opens previous buffered file.
 nmap <leader>e ;e#<CR>
