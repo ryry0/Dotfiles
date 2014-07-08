@@ -10,6 +10,13 @@ set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+"moves the dir for swap files to ~/.swp 
+"having trailing // forces file names to be unique
+"This is so I don't litter gdrive and dboxx with .swp files anymore
+set directory=$HOME/.temp/swp//
+set backupdir=$HOME/.temp/bak//
+set undodir=$HOME/.temp/und//
+set undofile
 
 set relativenumber | set number
 set nocompatible
@@ -109,6 +116,8 @@ nmap <leader>w :%s/\s\+$// <CR>
 nmap <leader>j Lzz
 nmap <leader>k Hzz
 
+"map leader v to ctrl v
+nmap <leader>v <C-v>
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
 
