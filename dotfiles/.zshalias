@@ -20,14 +20,21 @@ elif [[ $(tty) = /dev/tty2 ]] ; then
 	tmux 
 
 elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
-	tmux -2
+	exec tmux -2
 fi
 
+#path where symbolic links for marks are stored
+export MARKPATH=$HOME/.marks
 
 #zsh vim mode 
+autoload -U edit-command-line
+zle -N edit-command-line
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M vicmd v edit-command-line
 bindkey '^R' history-incremental-search-backward
+bindkey '^K' backward-kill-line
+bindkey '^Y' yank
 
 #/home/ryan/Programming/Scripts_and_Configurations/base16-default.dark.sh
 #export LS_COLORS='di=34:fi=0:ln=36:pi=1;31:so=35:bd=33:cd=31:or=31:ex=32'
@@ -42,7 +49,6 @@ alias cls='clear && ls --color=auto'
 alias mpcli='mplayer -vo fbdev2 -zoom -dr'
 alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
 alias pandora='pianobar'
-alias lock='cmatrix -sabl -u5 -C cyan && vlock'
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
 alias spv='tmux splitw -h '
@@ -50,11 +56,11 @@ alias sph='tmux splitw -v '
 alias dim='xbacklight -dec 20'
 alias bright='xbacklight -inc 20'
 alias copy='rsync -aP'
-alias rdpalienpc='rdesktop 192.168.1.116 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote'
-alias dropbox='python2 ~/Dropbox/Programming/Scripts_and_Configurations/dropbox.py'
+alias rdpalienpc='rdesktop 192.168.1.117 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote'
+alias dropbox='python2 ~/Dropbox/Programming/Scripts_and_Configurations/scripts/dropbox.py'
 alias :q='exit'
 alias q='exit'
-alias reconnect='sudo systemctl restart netctl-auto@wlan0.service'
+alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
 alias dimmest='sudo xbacklight -set 3'
 alias pdf='zathura'
 alias brightest='sudo xbacklight -set 100'
@@ -69,6 +75,16 @@ alias gdb='gdb -tui -q'
 alias pd='popd'
 alias fgrep='fgrep --color=always'
 alias c='ra'
+alias dirs='dirs -v'
+alias matlab='matlab -nodesktop -nosplash'
+alias sl='ls'
+alias jp='jump'
+alias mk='mark'
+alias umk='unmark'
+alias lm='marks'
+alias kd='pwd | keep'
+alias clc='clear'
+alias h='history'
 
 #make aliases
 alias remake='make re'
@@ -115,11 +131,24 @@ function cd () {
 	builtin cd "$@" && ls --color=auto
 }
 
+#this function cd's to home before running fcd
+function hcd () {
+	builtin cd ~
+	fcd "$@"
+}
+
 #function cl () {
 #	cd "$@" && ls --color=auto
 #	}
 
-#uses ranger, then cd's to whatever directory you left off in
+# Compatible with ranger 1.4.2 through 1.6.*
+#
+# Automatically change the directory in bash after closing ranger
+#
+# This is a bash function for .bashrc to automatically change the directory to
+# the last visited one after ranger quits.
+# To undo the effect of this function, you can type "cd -" to return to the
+# original directory.
 function ra {
     tempfile='/tmp/chosendir'
     /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -130,6 +159,7 @@ function ra {
     rm -f -- "$tempfile"
 }
 
+#this function stores the output of a command.
 function keep () {
 	kept=()
 	kept=( $~* )
@@ -140,6 +170,36 @@ function keep () {
 	fi
 	print -Rc - $kept
 }
+
+# mark system courtesy of Jeroen Janssens
+function jump {
+	cd -P "$MARKPATH/$1" || echo "No such mark: $1"
+}
+
+function mark {
+#fixed odd link duplication error.
+	if [ -e "$MARKPATH/$1" ]; then
+		rm "$MARKPATH/$1"
+	fi
+	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+function unmark {
+	rm -i "$MARKPATH/$1"
+}
+
+function marks {
+	ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+
+# mark tab completion
+function _completemarks {
+	reply=($(ls $MARKPATH))
+}
+
+compctl -K _completemarks jump
+compctl -K _completemarks unmark
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -164,11 +224,4 @@ function keep () {
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-# Compatible with ranger 1.4.2 through 1.6.*
-#
-# Automatically change the directory in bash after closing ranger
-#
-# This is a bash function for .bashrc to automatically change the directory to
-# the last visited one after ranger quits.
-# To undo the effect of this function, you can type "cd -" to return to the
-# original directory.
+export PATH=/home/ryan/Dropbox/Programming/Scripts_and_Configurations/scripts:$PATH
