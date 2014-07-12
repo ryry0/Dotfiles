@@ -1,7 +1,7 @@
 syntax on
 set ignorecase
 set smartcase
-set gdefault
+"set gdefault don't want this because it's nonstandard.
 set incsearch
 set showmatch
 set hlsearch
@@ -10,11 +10,12 @@ set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+set nobackup
 "moves the dir for swap files to ~/.swp 
 "having trailing // forces file names to be unique
 "This is so I don't litter gdrive and dboxx with .swp files anymore
 set directory=$HOME/.temp/swp//
-set backupdir=$HOME/.temp/bak//
+"set backupdir=$HOME/.temp/bak//
 set undodir=$HOME/.temp/und//
 set undofile
 
@@ -58,7 +59,8 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-"sets the colon to semicolon
+
+"sets the colon to enter vim command edit insert mode default
 nnoremap ; :
 
 "nnoremap : ;
@@ -67,6 +69,8 @@ nnoremap , ;
 "do the same thing in visual mode
 vnoremap ; :
 "vnoremap : ;
+cnoremap jj <C-f>
+
 " Also, this installs to /usr/share/vim/vimfiles, which may not be in
 " your runtime path (RTP). Be sure to add it too, e.g:
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
@@ -102,7 +106,7 @@ noremap <leader>q q:
 noremap <leader>; q:
 
 "opens previous buffered file.
-nmap <leader>e ;e#<CR>
+nmap <leader>e :e#<CR>
 
 "jumps to end of line in command mode
 nmap <leader>l $
@@ -118,6 +122,20 @@ nmap <leader>k Hzz
 
 "map leader v to ctrl v
 nmap <leader>v <C-v>
+
+"map leader a = ctrl a
+nmap <leader>a <C-a>
+
+"map leader x = ctrl x
+nmap <leader>x <C-x>
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
 
