@@ -5,19 +5,47 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
+set nosol
+set shm=at
+set scrolloff=2
+
+if has("wildmenu")
+	set wildignore+=*.a,*.o
+	set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+	set wildignore+=.DS_Store,.git,.hg,.svn
+	set wildignore+=*~,*.swp,*.tmp
+	set wildmenu
+	set wildignorecase
+	set wildmode=longest:full,full
+endif
 
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 set nobackup
-"moves the dir for swap files to ~/.swp 
-"having trailing // forces file names to be unique
-"This is so I don't litter gdrive and dboxx with .swp files anymore
-set directory=$HOME/.temp/swp//
-"set backupdir=$HOME/.temp/bak//
-set undodir=$HOME/.temp/und//
-set undofile
+if has("win32")
+	if has("gui_running")
+		set guifont=Consolas:h10:cANSI
+		colorscheme slate
+		:set guioptions-=m  "remove menu bar
+		:set guioptions-=T  "remove toolbar
+		:set guioptions-=r  "remove right-hand scroll bar
+		:set guioptions-=L  "remove left-hand scroll bar
+	endif
+	set noswapfile
+else
+	"moves the dir for swap files to ~/.swp
+	"having trailing // forces file names to be unique
+	"This is so I don't litter gdrive and dboxx with .swp files anymore
+	set directory=$HOME/.temp/swp//
+	"set backupdir=$HOME/.temp/bak//
+	set undodir=$HOME/.temp/und//
+	set undofile
+	colorscheme nucolors
+endif
+
+set background=dark
 
 set relativenumber | set number
 set nocompatible
@@ -26,12 +54,7 @@ set cursorline
 "set cursorcolumn
 
 "use z= to use spellcheck
-set spelllang=en
-
-"set auto spellcheck on latex files only
-autocmd BufNewFile,BufRead *.tex set spell
-
-"checks for trailing whitespace
+set spelllang=en_us
 
 set formatoptions=l
 set lbr
@@ -53,32 +76,18 @@ set showmode
 set grepprg=grep\ -nH\ $*
 "let g:tex_flavor = "latex"
 
+"control mappings
 "sets intuitive word wrapped line movement
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-
-"sets the colon to enter vim command edit insert mode default
-nnoremap ; :
-
-"nnoremap : ;
-nnoremap , ;
-
-"do the same thing in visual mode
-vnoremap ; :
-"vnoremap : ;
 cnoremap jj <C-f>
-
-" Also, this installs to /usr/share/vim/vimfiles, which may not be in
-" your runtime path (RTP). Be sure to add it too, e.g:
-"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-":helptags ~/.vim/doc
 
 let mapleader=" "
 "clears the highlight from the search
-nmap <silent> <leader><space> ;nohlsearch <CR>
+nmap <silent> <leader><space> :nohlsearch <CR>
 
 "break a line at the cursor
 nmap <silent> <leader><CR> i<CR><ESC>
@@ -102,7 +111,6 @@ noremap <leader>p "+p
 
 "allows you to open command line history using q;
 nnoremap q; q:
-noremap <leader>q q:
 noremap <leader>; q:
 
 "opens previous buffered file.
@@ -114,20 +122,27 @@ nmap <leader>l $
 nmap <leader>h __
 
 "clears all trailing whitespaces
-nmap <leader>w :%s/\s\+$// <CR>
+nmap <leader>$ :%s/\s\+$// <CR>
 
-"scrolls up in my weird way
-nmap <leader>j Lzz
-nmap <leader>k Hzz
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :x<CR>
+
+cnoremap <leader>q :q<CR>
+
+nnoremap <leader>S :%s
+nnoremap <leader>s :s
+vnoremap <leader>s :s
 
 "map leader v to ctrl v
 nmap <leader>v <C-v>
 
 "map leader a = ctrl a
-nmap <leader>a <C-a>
+nmap <leader>i <C-a>
 
 "map leader x = ctrl x
-nmap <leader>x <C-x>
+nmap <leader>d <C-x>
 
 let g:tmux_navigator_no_mappings = 1
 
@@ -155,8 +170,7 @@ nnoremap <f5> :call NumberToggle() <cr>
 
 "maps leader n to calling the number toggle.
 nmap <leader>n :call NumberToggle() <cr>
-set background=dark
-colorscheme nucolors
+
 " Statusline (c) Winterdom
 " http://winterdom.com/2007/06/vimstatusline
 
@@ -195,13 +209,20 @@ if has('statusline')
 endif
 set showcmd
 
+"file styling options
 "tab styling options
 "set c file styling
 "no spell check
 "tabs are 2 spaces
 "trailing whitespace is highlighted
 "no indent of namespaces
-autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2 
-			\| set tabstop=2 | set shiftwidth=2 
-			\| match ErrorMsg '\s\+$' | set cino=N-s 
-			\| set formatoptions+=t | set textwidth=80 
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2
+			\| set tabstop=2 | set shiftwidth=2
+			\| match ExtraWhitespace '\s\+$' | set cino=N-s
+			\| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+			\| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+			\| set formatoptions+=t | set textwidth=80
+
+"set auto spellcheck on latex files only
+autocmd BufNewFile,BufRead *.tex set spell
