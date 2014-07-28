@@ -10,7 +10,7 @@ set shm=at
 set scrolloff=2
 
 if has("wildmenu")
-	set wildignore+=*.a,*.o
+	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
 	set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 	set wildignore+=.DS_Store,.git,.hg,.svn
 	set wildignore+=*~,*.swp,*.tmp
@@ -33,6 +33,10 @@ if has("win32")
 		:set guioptions-=r  "remove right-hand scroll bar
 		:set guioptions-=L  "remove left-hand scroll bar
 	endif
+	nmap <silent> <A-k> :wincmd k<CR>
+	nmap <silent> <A-j> :wincmd j<CR>
+	nmap <silent> <A-h> :wincmd h<CR>
+	nmap <silent> <A-l> :wincmd l<CR>
 	set noswapfile
 else
 	"moves the dir for swap files to ~/.swp
@@ -43,6 +47,12 @@ else
 	set undodir=$HOME/.temp/und//
 	set undofile
 	colorscheme nucolors
+	let g:tmux_navigator_no_mappings = 1
+
+	nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+	nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
+	nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
+	nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 endif
 
 set background=dark
@@ -74,7 +84,6 @@ set pastetoggle=<F2>
 set showmode
 
 set grepprg=grep\ -nH\ $*
-"let g:tex_flavor = "latex"
 
 "control mappings
 "sets intuitive word wrapped line movement
@@ -84,6 +93,15 @@ vnoremap j gj
 vnoremap k gk
 
 cnoremap jj <C-f>
+inoremap jj <ESC>
+
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
+
+"remove annoying keys
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
 
 let mapleader=" "
 "clears the highlight from the search
@@ -96,7 +114,6 @@ nmap <silent> <leader><CR> i<CR><ESC>
 nmap <silent> <leader>o o<ESC>
 nmap <silent> <leader>O O<ESC>
 
-inoremap jj <ESC>
 "ctags and ctags navigation
 nnoremap <f12> :!ctags -R <cr>
 nnoremap <leader>] <C-]>
@@ -114,51 +131,78 @@ nnoremap q; q:
 noremap <leader>; q:
 
 "opens previous buffered file.
-nmap <leader>e :e#<CR>
+nmap <leader>e3 :e#<CR>
+
+nmap <leader>e<space> :e<space>
+
+"conversion mappings
+nmap <leader>edos :e ++ff=dos<CR>
+nmap <leader>enix :e ++ff=dos<CR> :setlocal ff=unix<CR>
 
 "jumps to end of line in command mode
-nmap <leader>l $
+"nmap <leader>l $
 "jumps to beginning of line in command mode
 nmap <leader>h __
 
 "clears all trailing whitespaces
 nmap <leader>$ :%s/\s\+$// <CR>
 
+"command line shortcuts
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
-cnoremap <leader>q :q<CR>
-
 nnoremap <leader>S :%s
 nnoremap <leader>s :s
 vnoremap <leader>s :s
 
+nnoremap <leader>ls :ls<CR>
+nnoremap <leader>b  :b
+
 "map leader v to ctrl v
 nmap <leader>v <C-v>
 
-"map leader a = ctrl a
+"map leader i = ctrl a (increment)
 nmap <leader>i <C-a>
 
-"map leader x = ctrl x
+"map leader d = ctrl x (decrement)
 nmap <leader>d <C-x>
 
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"maps for make/make error
+nmap <leader>m :w<CR>:make<CR>
+nmap <leader>n :cn<CR>
+nmap <leader>N :cp<CR>
 
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
+
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf 
+endfunction
+
+nmap <silent> <leader>cw :call MarkWindowSwap()<CR>
+nmap <silent> <leader>cp :call DoWindowSwap()<CR>
 
 function! NumberToggle()
 	if (&relativenumber ==1)
 		set norelativenumber
 		set number
-
 	else
 		set nonumber
 		set relativenumber
@@ -169,44 +213,8 @@ endfunc
 nnoremap <f5> :call NumberToggle() <cr>
 
 "maps leader n to calling the number toggle.
-nmap <leader>n :call NumberToggle() <cr>
+nmap <leader># :call NumberToggle() <cr>
 
-" Statusline (c) Winterdom
-" http://winterdom.com/2007/06/vimstatusline
-
-set ls=2 " Always show status line
-hi StatusLine ctermbg=black
-hi StatusLine ctermfg=gray
-if has('statusline')
-	" Status line detail:
-	" %f     file path
-	" %y     file type between braces (if defined)
-	" %([%R%M]%)   read-only, modified and modifiable flags between braces
-	" %{'!'[&ff=='default_file_format']}
-	"        shows a '!' if the file format is not the platform
-	"        default
-	" %{'$'[!&list]}  shows a '*' if in list mode
-	" %{'~'[&pm=='']} shows a '~' if in patchmode
-	" (%{synIDattr(synID(line('.'),col('.'),0),'name')})
-	"        only for debug : display the current syntax item name
-	" %=     right-align following items
-	" #%n    buffer number
-	" %l/%L,%c%V   line number, total number of lines, and column number
-	function SetStatusLineStyle()
-		if &stl == '' || &stl =~ 'synID'
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=buff:#%n line:%l/%L col:%c%V "
-		else
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=buff:#%n line:%l/%L col%c%V "
-		endif
-	endfunc
-	" Switch between the normal and vim-debug modes in the status line
-	nmap _ds :call SetStatusLineStyle()<CR>
-	call SetStatusLineStyle()
-	" Window title
-	if has('title')
-		set titlestring=%t%(\ [%R%M]%)
-	endif
-endif
 set showcmd
 
 "file styling options
@@ -224,5 +232,11 @@ autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2
 			\| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 			\| set formatoptions+=t | set textwidth=80
 
+"Latex bindings
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell
+let g:tex_flavor = "latex"
+"set no spell checking in latex comments.
+let g:tex_comment_nospell = 1
+let g:atp_map_backward_motion_leader = ","
+let g:atp_map_forward_motion_leader = ","
