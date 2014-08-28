@@ -248,13 +248,13 @@ if !hasmapto("<Plug>TexJMotionForward", 'i')
     imap <silent> <buffer> <C-j> <Plug>TexJMotionForward
 endif
 if !hasmapto("<Plug>TexJMotionForward", 'n')
-    nmap <silent> <buffer> <C-j> <Plug>TexJMotionForward
+    "nmap <silent> <buffer> <C-j> <Plug>TexJMotionForward
 endif
 if !hasmapto("<Plug>TexJMotionBackward", 'i')
     imap <silent> <buffer> <C-k> <Plug>TexJMotionBackward
 endif
 if !hasmapto("<Plug>TexJMotionBackward", 'n')
-    nmap <silent> <buffer> <C-k> <Plug>TexJMotionBackward
+    "nmap <silent> <buffer> <C-k> <Plug>TexJMotionBackward
 endif
 
 " Repair: } and { 
