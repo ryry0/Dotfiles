@@ -5,7 +5,7 @@ autoload -U colors && colors
 source /home/ryan/Programming/Scripts_and_Configurations/ryry.zsh-theme
 
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec startx &> /dev/null
+	exec startx 
 
 elif [[ $(tty) = /dev/tty2 ]] ; then
 	tmux 
@@ -26,6 +26,8 @@ bindkey -M vicmd v edit-command-line
 bindkey '^R' history-incremental-search-backward
 bindkey '^K' backward-kill-line
 bindkey '^Y' yank
+bindkey '^N' down-line-or-history
+bindkey '^P' up-line-or-history
 
 alias sudo='nocorrect sudo '
 alias ls='ls --color=auto -HF'
