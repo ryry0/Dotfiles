@@ -2,7 +2,7 @@
 LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
 prompt off 
 autoload -U colors && colors
-source /home/ryan/Programming/Scripts_and_Configurations/ryry.zsh-theme
+source ~/.ryry.zsh-theme
 
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
 	exec startx 
@@ -185,4 +185,4 @@ compctl -K _completemarks jump
 compctl -K _completemarks unmark
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export PATH=/home/ryan/Dropbox/Programming/Scripts_and_Configurations/scripts:$PATH
+export PATH=/home/ryan/Dropbox/Programming/usr/bin:$PATH
