@@ -73,6 +73,9 @@ alias lm='marks'
 alias kd='pwd | keep'
 alias clc='clear'
 alias h='history'
+alias alert='notify.sh'
+alias notify='notify.sh'
+alias batt-alert='while :; do ~/Programming/etc/bin/batt_check.sh; sleep 120; done &'
 
 #make aliases
 alias remake='make re'
@@ -185,4 +188,4 @@ compctl -K _completemarks jump
 compctl -K _completemarks unmark
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export PATH=/home/ryan/Dropbox/Programming/usr/bin:$PATH
+export PATH=/home/ryan/Dropbox/Programming/etc/bin:$PATH
