@@ -8,6 +8,8 @@ set hlsearch
 set nosol
 set shm=at
 set scrolloff=2
+set splitright "open splits to the right.
+set splitbelow "open splits below.
 
 if has("wildmenu")
 	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
