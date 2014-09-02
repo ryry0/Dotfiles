@@ -1,4 +1,6 @@
-dir=~/Dropbox/Programming/usr/dotfiles # dotfiles directory olddir=~/dotfiles_old             # old dotfiles backup directory
+dir=$(pwd)
+# dotfiles directory olddir=~/dotfiles_old
+# old dotfiles backup directory
 files=".bashrc .vimrc .vim .Xresources .crawlrc .fehbg .ryry.zsh-theme .spectrwm.conf .tmux.conf .xinitrc .zshalias"        # list of files/folders to symlink in homedir
 
 for file in $files; do
