@@ -4,7 +4,7 @@
 # check battery level, and raise a notification if the capacity is
 # under a defined level
 
-LEVL=82
+LEVL=30
 BATC=$(sed 's/%//' /sys/class/power_supply/BAT1/capacity)
 
 test ${BATC} -le ${LEVL} && echo "battery level: $BATC" | notify.sh 
