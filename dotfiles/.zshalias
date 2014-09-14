@@ -1,14 +1,16 @@
 #the following fixes the libswmhackso.0.0 cannot be preloaded problem
 LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
-prompt off 
+prompt off
 autoload -U colors && colors
+autoload -U zcalc
+
 source ~/.ryry.zsh-theme
 
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec startx 
+	exec startx
 
 elif [[ $(tty) = /dev/tty2 ]] ; then
-	tmux 
+	tmux
 
 elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
 	exec tmux -2
@@ -17,7 +19,7 @@ fi
 #path where symbolic links for marks are stored
 export MARKPATH=$HOME/.marks
 
-#zsh vim mode 
+#zsh vim mode
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -v
@@ -33,6 +35,7 @@ alias sudo='nocorrect sudo '
 alias ls='ls --color=auto -HF'
 alias vi='vim'
 alias pacman='sudo pacman'
+alias cl='clear'
 alias cls='clear && ls --color=auto'
 alias mpcli='mplayer -vo fbdev2 -zoom -dr'
 alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
@@ -45,7 +48,7 @@ alias dim='xbacklight -dec 20'
 alias bright='xbacklight -inc 20'
 alias copy='rsync -aP'
 alias rdpalienpc='rdesktop 192.168.1.117 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote'
-alias dropbox='python2 ~/Dropbox/Programming/Scripts_and_Configurations/scripts/dropbox.py'
+alias dropbox='python2 ~/Dropbox/Programming/etc/bin/dropbox.py'
 alias :q='exit'
 alias q='exit'
 alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
@@ -63,7 +66,6 @@ alias gdb='gdb -tui -q'
 alias pd='popd'
 alias fgrep='fgrep --color=always'
 alias c='ra'
-alias dirs='dirs -v'
 alias matlab='matlab -nodesktop -nosplash'
 alias sl='ls'
 alias jp='jump'
@@ -76,6 +78,7 @@ alias h='history'
 alias alert='notify.sh'
 alias notify='notify.sh'
 alias batt-alert='while :; do ~/Programming/etc/bin/batt_check.sh; sleep 120; done &'
+alias free-cache='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 
 #make aliases
 alias remake='make re'
@@ -99,6 +102,7 @@ alias gc='git commit'
 alias ga='git add'
 alias gd='git diff'
 alias gp='git push'
+alias gpom='git push origin master'
 
 #suffix aliases
 alias -s tex=vim
@@ -118,6 +122,9 @@ function fcd () {
 	fi
 }
 
+function analyze-history () {
+	fc -l 0  | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n$1
+}
 function cd () {
 	builtin cd "$@" && ls --color=auto
 }
