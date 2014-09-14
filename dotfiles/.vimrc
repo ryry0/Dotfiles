@@ -10,6 +10,7 @@ set shm=at
 set scrolloff=2
 set splitright "open splits to the right.
 set splitbelow "open splits below.
+set backspace=indent,eol,start "sets backspace to work like normal
 
 if has("wildmenu")
 	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
@@ -29,12 +30,14 @@ set nobackup
 if has("win32")
 	if has("gui_running")
 		set guifont=Consolas:h10:cANSI
-		colorscheme slate
+		"colorscheme slate
 		:set guioptions-=m  "remove menu bar
 		:set guioptions-=T  "remove toolbar
 		:set guioptions-=r  "remove right-hand scroll bar
 		:set guioptions-=L  "remove left-hand scroll bar
 	endif
+	colorscheme zellner
+	set background=light
 	nmap <silent> <A-k> :wincmd k<CR>
 	nmap <silent> <A-j> :wincmd j<CR>
 	nmap <silent> <A-h> :wincmd h<CR>
@@ -48,6 +51,7 @@ else
 	"set backupdir=$HOME/.temp/bak//
 	set undodir=$HOME/.temp/und//
 	set undofile
+	set viminfo+=n~/.temp
 	colorscheme nucolors
 	let g:tmux_navigator_no_mappings = 1
 
@@ -55,9 +59,9 @@ else
 	nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
 	nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
 	nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+	set background=dark
 endif
 
-set background=dark
 
 set relativenumber | set number
 set nocompatible
@@ -133,16 +137,14 @@ nnoremap q; q:
 noremap <leader>; q:
 
 "opens previous buffered file.
-nmap <leader>e3 :e#<CR>
-
-nmap <leader>e<space> :e<space>
+nmap <leader>e :e#<CR>
 
 "conversion mappings
-nmap <leader>edos :e ++ff=dos<CR>
-nmap <leader>enix :e ++ff=dos<CR> :setlocal ff=unix<CR>
+command Edos e ++ff=dos
+command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
 
 "jumps to end of line in command mode
-"nmap <leader>l $
+nmap <leader>l $
 "jumps to beginning of line in command mode
 nmap <leader>h __
 
@@ -155,11 +157,8 @@ nnoremap <leader>Q :q!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
-nnoremap <leader>S :%s
-nnoremap <leader>s :s
-vnoremap <leader>s :s
+nnoremap <leader>s :%s
 
-nnoremap <leader>ls :ls<CR>
 nnoremap <leader>b  :b
 
 "map leader v to ctrl v
