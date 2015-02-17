@@ -1,0 +1,17 @@
+zsh: Mount tmpfs: mount -t tmpfs -o size=20m tmpfs /mnt/tmp
+
+vim: Use ranges e.g. 90t. (copy line 90 to here).
+vim: zc/zo folding commands
+vim: * search
+vim: % goes to next parenthesis
+vim: Use <leader>cw and <leader>cp to swap windows
+vim: copy previous line with foo here ?foo?[.]["]
+vim: copy following line with foo here /foo/[.]["]
+vim: Use paragraph objects
+vim: holy-grail
+vim: zt/b, move line at cursor to top/bottom of screen
+vim: use :normal command to apply a command to multiple lines
+vim: use C-r / in command line to paste last search
+vim: "0p pastes last yanked text
+vim: "1p pastes last deleted text
+vim: use gn to go to visual mode and select next match
