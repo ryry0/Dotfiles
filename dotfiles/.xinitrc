@@ -1,10 +1,9 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xrdb -merge ~/.Xresources
-dropboxd &
+syncthing -no-browser &
 xbacklight -set 40 
 eval $(cat ~/.fehbg)
 syndaemon -k -i 1 &
 unclutter -noevents &
 exec spectrwm
-
