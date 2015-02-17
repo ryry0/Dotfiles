@@ -5,12 +5,15 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
-set nosol
-set shm=at
-set scrolloff=2
+set nosol "don't change cursor column when moving
+set shm=at "shortens messages to minimum
+set scrolloff=2 "leaves 2 lines at top and bottom of screen from cursor
 set splitright "open splits to the right.
 set splitbelow "open splits below.
 set backspace=indent,eol,start "sets backspace to work like normal
+set exrc "allows local configurations of .vimrc
+"set secure "disables unsafe options in local .vimrc
+"set title
 
 if has("wildmenu")
 	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
@@ -64,6 +67,7 @@ endif
 
 
 set relativenumber | set number
+"set number
 set nocompatible
 set hidden
 set cursorline
@@ -73,7 +77,7 @@ set cursorline
 set spelllang=en_us
 
 set formatoptions=l
-set lbr
+set lbr "don't break words in middle
 
 filetype on
 filetype indent on
@@ -108,6 +112,7 @@ nnoremap <C-k> <C-b>
 nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
+vnoremap K <nop>
 
 let mapleader=" "
 "clears the highlight from the search
@@ -125,12 +130,13 @@ nnoremap <f12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 nnoremap <leader>] <C-]>
 nnoremap <leader>t <C-t>
 
-"maps leader r to redo
-nnoremap <leader>r <C-r>
-
 noremap <leader>y "+y
 noremap <leader>Y "+Y
 noremap <leader>p "+p
+
+vnoremap <leader>y "+y
+vnoremap <leader>Y "+Y
+vnoremap <leader>p "+p
 
 "allows you to open command line history using q;
 nnoremap q; q:
@@ -175,8 +181,30 @@ nmap <leader>m :w<CR>:make!<CR>
 nmap <leader>n :cn<CR>
 nmap <leader>N :cp<CR>
 
+"maps for indentation
+nmap <leader>{ =i{
+nmap <leader>g gg=G
+
+"maps for change commands
+nnoremap ci( %ci(
+nnoremap di( %di(
+nnoremap vi( %vi(
+
+nnoremap ci{ %ci{
+nnoremap di{ %di{
+nnoremap vi{ %vi{
+
+nnoremap ci[ %ci[
+nnoremap di[ %di[
+nnoremap vi[ %vi[
+
+"late parenthesis mapping. Surrounds visually selected text in parens
+vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
+
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set nonumber
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
@@ -226,7 +254,7 @@ set showcmd
 "trailing whitespace is highlighted
 "no indent of namespaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd FileType c,cpp set nospell | set expandtab | set softtabstop=2
+autocmd FileType arduino,c,cpp set nospell | set expandtab | set softtabstop=2
 			\| set tabstop=2 | set shiftwidth=2
 			\| match ExtraWhitespace '\s\+$' | set cino=N-s
 			\| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -269,17 +297,20 @@ function! Iab (ab, full)
 	\"')<CR>"
 endfunction
 
-"abbreviations :
+"C abbreviations :
 call Iab('incl', '#include <><Left>')
 call Iab('defi', '#define ')
-call Iab('fori', 'for (int i = 0; i < ; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
-call Iab('foru', 'for (unsigned int i = 0; i < ; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
-call Iab('fors', 'for (size_t i = 0; i < ; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
+call Iab('fori', 'for (int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
+call Iab('foru', 'for (unsigned int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
+call Iab('fors', 'for (size_t i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
 call Iab('forb', 'for (;;) {<CR><CR>}<UP><UP><ESC>0f(a')
 call Iab('whil', 'while () {<CR><CR>}<UP><UP><ESC>0f(a')
 call Iab('ifelse', 'if () {<CR><CR>}<CR>else {<CR><CR>}<ESC>5k0f(a')
 call Iab('ifb', 'if () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('elb', 'else () {<CR><CR>}<UP><UP><ESC>0f(a')
+call Iab('elib', 'else if () {<CR><CR>}<UP><UP><ESC>0f(a')
+call Iab('elb', 'else {<CR>}<ESC>O')
 call Iab('swb', 'switch () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('intmain', 'int main (int argc, char ** argv) {<CR><CR>}<UP>')
-call Iab('intmainb', 'int main () {<CR><CR>}<UP>')
+call Iab('intmain', 'int main(int argc, char ** argv) {<CR>}<ESC>O')
+call Iab('intmainb', 'int main() {<CR>}<ESC>O')
+call Iab('bb', '{<CR>}<ESC>O')
+call Iab('ifnd', '#ifndef<CR>#define<CR>#endif<ESC>2kA')
