@@ -112,4 +112,4 @@ function TRAPINT() {
 
 PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
 
-RPROMPT="\${vim_mode}$(check_tmux)"
+RPROMPT="\${vim_mode}$(check_tmux)%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)"
