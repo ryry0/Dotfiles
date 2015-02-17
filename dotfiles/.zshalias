@@ -2,7 +2,6 @@
 LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
 prompt off
 autoload -U colors && colors
-autoload -U zcalc
 
 source ~/.ryry.zsh-theme
 
@@ -10,6 +9,7 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
 	exec startx
 
 elif [[ $(tty) = /dev/tty2 ]] ; then
+	sudo setfont ter-214n
 	tmux
 
 elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
@@ -35,8 +35,8 @@ alias sudo='nocorrect sudo '
 alias ls='ls --color=auto -HF'
 alias vi='vim'
 alias pacman='sudo pacman'
+alias pamcan='pacman'
 alias cl='clear'
-alias cls='clear && ls --color=auto'
 alias mpcli='mplayer -vo fbdev2 -zoom -dr'
 alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
 alias pandora='pianobar'
@@ -65,7 +65,8 @@ alias endmoviemode='xser dpms; xset s on'
 alias gdb='gdb -tui -q'
 alias pd='popd'
 alias fgrep='fgrep --color=always'
-alias c='ra'
+alias c='rangercd'
+alias ra='ranger'
 alias matlab='matlab -nodesktop -nosplash'
 alias sl='ls'
 alias jp='jump'
@@ -73,12 +74,18 @@ alias mk='mark'
 alias umk='unmark'
 alias lm='marks'
 alias kd='pwd | keep'
-alias clc='clear'
 alias h='history'
 alias alert='notify.sh'
 alias notify='notify.sh'
 alias batt-alert='while :; do ~/Programming/etc/bin/batt_check.sh; sleep 120; done &'
 alias free-cache='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+alias net-down='systemctl stop netctl-auto@wlp2s0'
+alias net-auto-restart='systemctl restart netctl-auto@wlp2s0'
+alias mouse-off='synclient touchpadoff=1'
+alias mouse-on='synclient touchpadoff=0'
+alias vim-tips='cat ~/.tips | grep -e "^vim"'
+alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
+alias ka='tmux kill-pane -a'
 
 #make aliases
 alias remake='make re'
@@ -90,6 +97,7 @@ alias amka='make'
 alias akme='make'
 alias amke='make'
 alias mkea='make'
+alias mu='make upload'
 
 #git aliases
 alias gch='git checkout'
@@ -98,11 +106,14 @@ alias gs='git status'
 alias gl='git log'
 alias glo='git log --oneline'
 alias gls='git log --pretty=short'
+alias glg='git log --graph --all --decorate'
 alias gc='git commit'
 alias ga='git add'
 alias gd='git diff'
 alias gp='git push'
 alias gpom='git push origin master'
+alias gpo='git push origin'
+alias gpoa='git push origin --all'
 
 #suffix aliases
 alias -s tex=vim
@@ -143,7 +154,7 @@ function hcd () {
 # the last visited one after ranger quits.
 # To undo the effect of this function, you can type "cd -" to return to the
 # original directory.
-function ra {
+function rangercd {
     tempfile='/tmp/chosendir'
     /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
     test -f "$tempfile" &&
@@ -189,6 +200,17 @@ function marks {
 # mark tab completion
 function _completemarks {
 	reply=($(ls $MARKPATH))
+}
+
+# mkdir and cd
+function mkcd {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+  elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
 }
 
 compctl -K _completemarks jump
