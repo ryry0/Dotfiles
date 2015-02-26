@@ -97,7 +97,11 @@ alias amka='make'
 alias akme='make'
 alias amke='make'
 alias mkea='make'
+alias m='make'
 alias mu='make upload'
+alias mc='make clean'
+alias mcm='make clean && make'
+alias mcmu='make clean && make && make upload'
 
 #git aliases
 alias gch='git checkout'
@@ -114,6 +118,7 @@ alias gp='git push'
 alias gpom='git push origin master'
 alias gpo='git push origin'
 alias gpoa='git push origin --all'
+alias gdhh='git diff HEAD^ HEAD'
 
 #suffix aliases
 alias -s tex=vim

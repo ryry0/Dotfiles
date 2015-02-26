@@ -183,7 +183,7 @@ nmap <leader>N :cp<CR>
 
 "maps for indentation
 nmap <leader>{ =i{
-nmap <leader>g gg=G
+nmap <leader>= gg=G
 
 "maps for change commands
 nnoremap ci( %ci(
