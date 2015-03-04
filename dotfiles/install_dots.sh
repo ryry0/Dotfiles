@@ -1,7 +1,7 @@
 dir=$(pwd)
 # dotfiles directory olddir=~/dotfiles_old
 # old dotfiles backup directory
-files=".bashrc .vimrc .vim .Xresources .crawlrc .fehbg .ryry.zsh-theme .spectrwm.conf .tmux.conf .xinitrc .zshalias"        # list of files/folders to symlink in homedir
+files=".bashrc .vimrc .vim .Xresources .crawlrc .fehbg .ryry.zsh-theme .spectrwm.conf .tmux.conf .xinitrc .zshalias .juliarc.jl"        # list of files/folders to symlink in homedir
 
 for file in $files; do
     #echo "Moving any existing dotfiles from ~ to $olddir"
