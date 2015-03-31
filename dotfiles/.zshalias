@@ -36,56 +36,61 @@ alias ls='ls --color=auto -HF'
 alias vi='vim'
 alias pacman='sudo pacman'
 alias pamcan='pacman'
-alias cl='clear'
-alias mpcli='mplayer -vo fbdev2 -zoom -dr'
-alias mpclifs='setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -y 768 -fs &>/dev/null'
-alias pandora='pianobar'
+
+alias systemctl='sudo systemctl'
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
-alias spv='tmux splitw -h '
-alias sph='tmux splitw -v '
+alias sus='systemctl suspend'
+
 alias dim='xbacklight -dec 20'
 alias bright='xbacklight -inc 20'
-alias copy='rsync -aP'
-alias rdpalienpc='rdesktop 192.168.1.117 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote'
-alias dropbox='python2 ~/Dropbox/Programming/etc/bin/dropbox.py'
-alias :q='exit'
-alias q='exit'
-alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
 alias dimmest='sudo xbacklight -set 3'
-alias pdf='zathura'
 alias brightest='sudo xbacklight -set 100'
-alias gchat='freetalk'
-alias gmail='links "mail.google.com/mail/?ui=html"'
+
+alias copy='rsync -aP'
+
+alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
+alias net-down='systemctl stop netctl-auto@wlp2s0'
+
 alias externmonitor='xrandr --auto --output LVDS1 --off'
 alias dualmonitor='xrandr --output LVDS1 --auto --output VGA1 --auto --above LVDS1'
-alias systemctl='sudo systemctl'
+
 alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
+
 alias gdb='gdb -tui -q'
+
 alias pd='popd'
-alias fgrep='fgrep --color=always'
-alias c='rangercd'
-alias ra='ranger'
+alias fgrep='fgrep --color=auto'
+
 alias matlab='matlab -nodesktop -nosplash'
 alias sl='ls'
+
 alias jp='jump'
 alias mk='mark'
 alias umk='unmark'
 alias lm='marks'
 alias kd='pwd | keep'
+
 alias h='history'
+
 alias alert='notify.sh'
 alias notify='notify.sh'
 alias batt-alert='while :; do ~/Programming/etc/bin/batt_check.sh; sleep 120; done &'
+
 alias free-cache='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
-alias net-down='systemctl stop netctl-auto@wlp2s0'
-alias net-auto-restart='systemctl restart netctl-auto@wlp2s0'
+
 alias mouse-off='synclient touchpadoff=1'
 alias mouse-on='synclient touchpadoff=0'
+
 alias vim-tips='cat ~/.tips | grep -e "^vim"'
 alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
+
+#tmux aliases
 alias ka='tmux kill-pane -a'
+alias ts='tmux switch -t'
+alias td='tmux detach'
+
 
 #make aliases
 alias remake='make re'
@@ -119,6 +124,9 @@ alias gpom='git push origin master'
 alias gpo='git push origin'
 alias gpoa='git push origin --all'
 alias gdhh='git diff HEAD^ HEAD'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gdc='git diff --cached'
 
 #suffix aliases
 alias -s tex=vim
@@ -141,6 +149,7 @@ function fcd () {
 function analyze-history () {
 	fc -l 0  | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n$1
 }
+
 function cd () {
 	builtin cd "$@" && ls --color=auto
 }
@@ -149,24 +158,6 @@ function cd () {
 function hcd () {
 	builtin cd ~
 	fcd "$@"
-}
-
-# Compatible with ranger 1.4.2 through 1.6.*
-#
-# Automatically change the directory in bash after closing ranger
-#
-# This is a bash function for .bashrc to automatically change the directory to
-# the last visited one after ranger quits.
-# To undo the effect of this function, you can type "cd -" to return to the
-# original directory.
-function rangercd {
-    tempfile='/tmp/chosendir'
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" &&
-    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-        cd -- "$(cat "$tempfile")"
-    fi
-    rm -f -- "$tempfile"
 }
 
 #this function stores the output of a command.
@@ -221,5 +212,7 @@ function mkcd {
 compctl -K _completemarks jump
 compctl -K _completemarks unmark
 
+# add z function
+. ~/.z.sh
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 export PATH=/home/ryan/Dropbox/Programming/etc/bin:$PATH
