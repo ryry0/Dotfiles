@@ -82,8 +82,10 @@ function check_tmux()
 {
 	if [ $TERM = "linux" ] ; then
 		echo "[%{$fg[cyan]%}$(wpa_cli -i wlp2s0 status | sed -n 's/^ssid=//p')%{$reset_color%}]$(battery_prompt)[%{$fg[blue]%}%W%{$reset_color%}][%{$fg[blue]%}%t%{$reset_color%}][%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
-	#else 
-		#echo "[%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
+	else #only display host name when over ssh
+		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+			echo "[%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
+		fi
 	fi
 }
 
@@ -112,4 +114,4 @@ function TRAPINT() {
 
 PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
 
-RPROMPT="\${vim_mode}$(check_tmux)%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)"
+RPROMPT="\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
