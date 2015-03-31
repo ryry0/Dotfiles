@@ -3,6 +3,9 @@ zsh: pactree to view dependency tree
 zsh: pactree -r to view reverse dependency tree
 zsh: pacman -Qdt to view orphaned packages
 zsh: Use sudoedit instead of sudo vi
+zsh: mplayer in cli mode: mplayer -vo fbdev2 -zoom -dr
+zsh: mplayer in cli mode fullscreen: setterm -cursor off && mplayer -vo fbdev2 -zoom -dr -x 1366 -u 768 -fs &> /dev/null
+zsh: remote desktop: rdesktop 192.168.1.117 -u Ryan -p - -g 1600x1200 -x l -a 32 -K -z -r sound:remote
 
 vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
