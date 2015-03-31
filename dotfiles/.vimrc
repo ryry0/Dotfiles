@@ -149,11 +149,6 @@ nmap <leader>e :e#<CR>
 command Edos e ++ff=dos
 command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
 
-"jumps to end of line in command mode
-nmap <leader>l $
-"jumps to beginning of line in command mode
-nmap <leader>h __
-
 "clears all trailing whitespaces
 nmap <leader>$ :%s/\s\+$// <CR>
 
@@ -300,9 +295,9 @@ endfunction
 "C abbreviations :
 call Iab('incl', '#include <><Left>')
 call Iab('defi', '#define ')
-call Iab('fori', 'for (int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
-call Iab('foru', 'for (unsigned int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
-call Iab('fors', 'for (size_t i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a')
+call Iab('fori', 'for (int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
+call Iab('foru', 'for (unsigned int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
+call Iab('fors', 'for (size_t i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
 call Iab('forb', 'for (;;) {<CR><CR>}<UP><UP><ESC>0f(a')
 call Iab('whil', 'while () {<CR><CR>}<UP><UP><ESC>0f(a')
 call Iab('ifelse', 'if () {<CR><CR>}<CR>else {<CR><CR>}<ESC>5k0f(a')
@@ -314,3 +309,10 @@ call Iab('intmain', 'int main(int argc, char ** argv) {<CR>}<ESC>O')
 call Iab('intmainb', 'int main() {<CR>}<ESC>O')
 call Iab('bb', '{<CR>}<ESC>O')
 call Iab('ifnd', '#ifndef<CR>#define<CR>#endif<ESC>2kA')
+call Iab('begenu','\begin{enumerate}<CR>\item <CR>\end{enumerate}<ESC>kcc')
+call Iab('begitem','\begin{itemize}<CR>\item <CR>\end{itemize}<ESC>kcc')
+call Iab('begeq','\begin{equation}<CR><CR>\end{equation}<ESC>kcc')
+call Iab('begal','\begin{align}<CR><CR>\end{align}<ESC>kcc')
+call Iab('begeqn','\begin{equation*}<CR><CR>\end{equation*}<ESC>kcc')
+call Iab('begaln','\begin{align*}<CR><CR>\end{align*}<ESC>kcc')
+call Iab('begend','\begin{}<CR>\end{}<ESC>k0f{ci{')
