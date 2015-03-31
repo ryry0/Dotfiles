@@ -94,6 +94,8 @@ endif
   	hi Type                      ctermfg=DarkRed		
   	hi DiffAdd                   ctermfg=DarkGray		ctermbg=LightGreen
   	hi DiffDelete                ctermfg=DarkGray		ctermbg=LightRed
+  	hi Search		     ctermfg=Black		ctermbg=DarkCyan
+  	hi MatchParen		     cterm=bold                 ctermfg=LightGreen		ctermbg=DarkGray
 
   	"hi link htmlTag              xmlTag
   	"hi link htmlTagName          xmlTagName
