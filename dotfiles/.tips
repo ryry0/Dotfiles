@@ -1,4 +1,8 @@
 zsh: Mount tmpfs: mount -t tmpfs -o size=20m tmpfs /mnt/tmp
+zsh: pactree to view dependency tree
+zsh: pactree -r to view reverse dependency tree
+zsh: pacman -Qdt to view orphaned packages
+zsh: Use sudoedit instead of sudo vi
 
 vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
@@ -15,3 +19,12 @@ vim: use C-r / in command line to paste last search
 vim: "0p pastes last yanked text
 vim: "1p pastes last deleted text
 vim: use gn to go to visual mode and select next match
+
+
+
+
+
+
+
+
+
