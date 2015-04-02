@@ -1,70 +1,42 @@
-#the following fixes the libswmhackso.0.0 cannot be preloaded problem
-LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
-prompt off
-autoload -U colors && colors
-
-source ~/.ryry.zsh-theme
-
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec startx
-
-elif [[ $(tty) = /dev/tty2 ]] ; then
-	sudo setfont ter-214n
-	tmux
-
-elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
-	exec tmux -2
-fi
-
-#path where symbolic links for marks are stored
+# Path where symbolic links for marks are stored
 export MARKPATH=$HOME/.marks
 
-#zsh vim mode
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M vicmd v edit-command-line
-bindkey '^R' history-incremental-search-backward
-bindkey '^K' backward-kill-line
-bindkey '^Y' yank
-bindkey '^N' down-line-or-history
-bindkey '^P' up-line-or-history
-
 alias sudo='nocorrect sudo '
-alias ls='ls --color=auto -HF'
-alias vi='vim'
 alias pacman='sudo pacman'
 alias pamcan='pacman'
+alias vi='vim'
+alias matlab='matlab -nodesktop -nosplash'
+alias gdb='gdb -tui -q'
 
+# system aliases
 alias systemctl='sudo systemctl'
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
 alias sus='systemctl suspend'
 
+# Brightness aliases
 alias dim='xbacklight -dec 20'
 alias bright='xbacklight -inc 20'
-alias dimmest='sudo xbacklight -set 3'
-alias brightest='sudo xbacklight -set 100'
+alias dimmest='xbacklight -set 3'
+alias brightest='xbacklight -set 100'
 
-alias copy='rsync -aP'
-
+# Network aliases
 alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
 alias net-down='systemctl stop netctl-auto@wlp2s0'
 
+# Screen configuration aliases
 alias externmonitor='xrandr --auto --output LVDS1 --off'
 alias dualmonitor='xrandr --output LVDS1 --auto --output VGA1 --auto --above LVDS1'
 
 alias moviemode='xset -dpms; xset s off'
 alias endmoviemode='xser dpms; xset s on'
 
-alias gdb='gdb -tui -q'
-
+# Folder and file manipulation aliases
 alias pd='popd'
-alias fgrep='fgrep --color=auto'
-
-alias matlab='matlab -nodesktop -nosplash'
+alias ls='ls --color=auto -HF'
 alias sl='ls'
+alias fgrep='fgrep --color=auto'
+alias copy='rsync -aP'
 
 alias jp='jump'
 alias mk='mark'
@@ -72,6 +44,7 @@ alias umk='unmark'
 alias lm='marks'
 alias kd='pwd | keep'
 
+# Utility aliases
 alias h='history'
 
 alias alert='notify.sh'
@@ -86,13 +59,12 @@ alias mouse-on='synclient touchpadoff=0'
 alias vim-tips='cat ~/.tips | grep -e "^vim"'
 alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
 
-#tmux aliases
+# Tmux aliases
 alias ka='tmux kill-pane -a'
 alias ts='tmux switch -t'
 alias td='tmux detach'
 
-
-#make aliases
+# Make aliases
 alias remake='make re'
 alias makerr='make 2>&1 | less -r'
 alias maek='make'
@@ -108,7 +80,7 @@ alias mc='make clean'
 alias mcm='make clean && make'
 alias mcmu='make clean && make && make upload'
 
-#git aliases
+# Git aliases
 alias gch='git checkout'
 alias gb='git branch'
 alias gs='git status'
@@ -128,91 +100,10 @@ alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gdc='git diff --cached'
 
-#suffix aliases
+# Suffix aliases
 alias -s tex=vim
 alias -s cpp=vim
 alias -s conf=vim
 alias -s c=vim
 alias -s hpp=vim
 alias -s h=vim
-
-#cd's to the first found folder that matches the argument
-function fcd () {
-	FOUND=$(find . -iname "$@" | sed 1q)
-	if [[ -d $FOUND ]]; then
-		builtin cd $FOUND
-	elif [[ -f $FOUND ]]; then
-		builtin cd "$(dirname $FOUND)"
-	fi
-}
-
-function analyze-history () {
-	fc -l 0  | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n$1
-}
-
-function cd () {
-	builtin cd "$@" && ls --color=auto
-}
-
-#this function cd's to home before running fcd
-function hcd () {
-	builtin cd ~
-	fcd "$@"
-}
-
-#this function stores the output of a command.
-function keep () {
-	kept=()
-	kept=( $~* )
-	if [[ ! -t 0 ]]; then
-		while read line; do
-			kept+=( $line )
-		done
-	fi
-	print -Rc - $kept
-}
-
-# mark system courtesy of Jeroen Janssens
-function jump {
-	cd -P "$MARKPATH/$1" || echo "No such mark: $1"
-}
-
-function mark {
-#fixed odd link duplication error, by deleting a preexisting link.
-	if [ -e "$MARKPATH/$1" ]; then
-		rm "$MARKPATH/$1"
-	fi
-	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
-}
-
-function unmark {
-	rm -i "$MARKPATH/$1"
-}
-
-function marks {
-	ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
-}
-
-# mark tab completion
-function _completemarks {
-	reply=($(ls $MARKPATH))
-}
-
-# mkdir and cd
-function mkcd {
-  if [ ! -n "$1" ]; then
-    echo "Enter a directory name"
-  elif [ -d $1 ]; then
-    echo "\`$1' already exists"
-  else
-    mkdir $1 && cd $1
-  fi
-}
-
-compctl -K _completemarks jump
-compctl -K _completemarks unmark
-
-# add z function
-. ~/.z.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export PATH=/home/ryan/Dropbox/Programming/etc/bin:$PATH

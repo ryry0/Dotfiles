@@ -2,8 +2,10 @@ dir=$(pwd)
 # dotfiles directory olddir=~/dotfiles_old
 # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files=".bashrc .vimrc .vim .Xresources .crawlrc .fehbg .ryry.zsh-theme \
-.spectrwm.conf .tmux.conf .xinitrc .zshalias .juliarc.jl .z.sh .mirrorboard.xkb"
+files=".bashrc .vimrc .vim .crawlrc \
+.spectrwm.conf .tmux.conf .juliarc.jl \
+.zshalias .zshcomp .zshfunc .zshkeys .zshopts .zshrc .ryry.zsh-theme \
+.xinitrc .Xresources .fehbg .mirrorboard.xkb"
 
 for file in $files; do
     #echo "Moving any existing dotfiles from ~ to $olddir"

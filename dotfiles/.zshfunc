@@ -1,0 +1,60 @@
+# Load zmv
+autoload -U zmv
+
+# Functions
+function analyze-history () {
+	fc -l 0  | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n$1
+}
+
+function cd () {
+	builtin cd "$@" && ls --color=auto
+}
+
+# This function stores the output of a command in a variable.
+function keep () {
+	kept=()
+	kept=( $~* )
+	if [[ ! -t 0 ]]; then
+		while read line; do
+			kept+=( $line )
+		done
+	fi
+	print -Rc - $kept
+}
+
+# Mark system courtesy of Jeroen Janssens
+function jump {
+	cd -P "$MARKPATH/$1" || echo "No such mark: $1"
+}
+
+function mark {
+# Fixed odd link duplication error, by deleting a preexisting link.
+	if [ -e "$MARKPATH/$1" ]; then
+		rm "$MARKPATH/$1"
+	fi
+	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+function unmark {
+	rm -i "$MARKPATH/$1"
+}
+
+function marks {
+	ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+
+# Mark tab completion
+function _completemarks {
+	reply=($(=ls $MARKPATH))
+}
+
+# Mkdir and cd
+function mkcd {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+  elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
+}
