@@ -262,8 +262,6 @@ autocmd BufNewFile,BufRead *.tex set spell
 let g:tex_flavor = "latex"
 "set no spell checking in latex comments.
 let g:tex_comment_nospell = 1
-let g:atp_map_backward_motion_leader = ","
-let g:atp_map_forward_motion_leader = ","
 
 "helper to delete empty space character
 "from Vim Manual
