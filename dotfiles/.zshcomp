@@ -8,7 +8,8 @@ compctl -K _completemarks jump
 compctl -K _completemarks unmark
 
 # Completion styles
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:*:*:*' menu select	# turns on colors in selection
+eval $(dircolors) # set colors for ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}		# ls colors
 
 # match uppercase from lowercase

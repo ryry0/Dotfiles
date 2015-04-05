@@ -12,10 +12,20 @@ fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem
 LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
+export SUDO_EDITOR="$(which vim)"
 
 # Set PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 export PATH=/home/ryan/Dropbox/Programming/etc/bin:$PATH
+
+# support colors in less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Set theme
 autoload -U colors && colors
