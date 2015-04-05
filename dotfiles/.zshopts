@@ -28,6 +28,7 @@ setopt LIST_AMBIGUOUS		# complete as much as possible before ambiguous
 setopt PROMPT_SUBST		# expand params, arith, and commands in prompt
 setopt NO_BEEP			# NO BEEPING
 setopt TRANSIENT_RPROMPT	# only show rprompt on current prompt
+setopt ALWAYS_LAST_PROMPT	# move cursor back up a line with menu selects
 
 # Correction
 setopt CORRECT			# correct commands
@@ -41,3 +42,4 @@ setopt NO_FLOW_CONTROL		# ignores ^S/^Q as flow control bits in terminal
 # Job Control
 setopt AUTO_RESUME		# allow typing in name of job to resume job
 setopt NO_BG_NICE		# don't run bg jobs at lower prio
+setopt LONG_LIST_JOBS		# display PID when suspending processes
