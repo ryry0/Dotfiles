@@ -34,9 +34,9 @@ URxvt*colorBD:            #ffffff
 URxvt*cursorColor:        #6D878D
 URxvt*cursorColor2:       #151515
 
-URxvt*transparent: true
-URxvt*shading: 20
-!5
+URxvt.depth: 32
+URxvt.background: [90]#000000
+
 URxvt.scrollBar: false
 URxvt*font: xft:terminus:size=13:antialias=true
 xterm*faceName:         Terminus:pixelsize=15
