@@ -62,8 +62,13 @@ alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
 
 # Tmux aliases
 alias ka='tmux kill-pane -a'
+alias tkap='tmux kill-pane -a'
 alias ts='tmux switch -t'
 alias td='tmux detach'
+alias tls='tmux ls'
+alias tkas='tmux kill-session -a'
+alias tks='tmux kill-session -t'
+alias ta='tmux attach-session -t'
 
 # Make aliases
 alias remake='make re'
