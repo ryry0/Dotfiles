@@ -2,7 +2,7 @@
 export MARKPATH=$HOME/.marks
 
 alias sudo='nocorrect sudo '
-alias pacman='sudo pacman'
+alias pacman='sudo pacman --color=auto'
 alias pamcan='pacman'
 alias vi='vim'
 alias matlab='matlab -nodesktop -nosplash'
@@ -105,6 +105,8 @@ alias gdhh='noglob git diff HEAD^ HEAD'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gdc='git diff --cached'
+alias gr='git reset'
+alias grh='git reset --hard'
 
 # Suffix aliases
 alias -s tex=vim

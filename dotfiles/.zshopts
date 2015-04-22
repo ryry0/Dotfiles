@@ -10,6 +10,7 @@ setopt HIST_IGNORE_DUPS		# don't append to hist if dup of the prev event
 setopt HIST_REDUCE_BLANKS	# reduce amount of whitespace in history
 setopt NO_HIST_VERIFY		# don't expand before hist expansion is run
 setopt SHARE_HISTORY		# share history between concurrent zshs
+setopt HIST_IGNORE_SPACE	# don't record  entries with leading space
 
 # Expansion and Globbing
 setopt EXTENDED_GLOB		# treat #~^ as part of patterns for file name gen
