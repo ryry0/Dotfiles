@@ -127,8 +127,12 @@ nmap <silent> <leader>O O<ESC>
 
 "ctags and ctags navigation
 nnoremap <f12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
+
 nnoremap <leader>] <C-]>
 nnoremap <leader>t <C-t>
+
+vnoremap <leader>] <C-]>
+vnoremap <leader>t <C-t>
 
 noremap <leader>y "+y
 noremap <leader>Y "+Y

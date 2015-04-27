@@ -62,7 +62,7 @@ endif
   	"hi Cursor                                            ctermbg=CursorColor
   	"hi CursorLine                                        ctermbg=CursorLColor
   	hi LineNr	ctermfg=darkcyan ctermbg=black
-  	hi Search                     ctermbg=DarkBlue
+  	"hi Search                     ctermbg=DarkBlue
   	"hi VertSplit                 ctermfg=SplitFG.      ctermbg=SplitBG
 	hi Visual                     ctermfg=black         ctermbg=DarkBlue
   	"hi Folded                    ctermfg=FoldFG.       ctermbg='.FoldBG
@@ -94,7 +94,7 @@ endif
   	hi Type                      ctermfg=DarkRed		
   	hi DiffAdd                   ctermfg=DarkGray		ctermbg=LightGreen
   	hi DiffDelete                ctermfg=DarkGray		ctermbg=LightRed
-  	hi Search		     ctermfg=Black		ctermbg=DarkCyan
+  	hi Search		     ctermfg=Black		ctermbg=DarkGray
   	hi MatchParen		     cterm=bold                 ctermfg=LightGreen		ctermbg=DarkGray
 
   	"hi link htmlTag              xmlTag
