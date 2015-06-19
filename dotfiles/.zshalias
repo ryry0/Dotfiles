@@ -7,6 +7,7 @@ alias pamcan='pacman'
 alias vi='vim'
 alias matlab='matlab -nodesktop -nosplash'
 alias gdb='gdb -tui -q'
+alias ..='cd ..'
 
 # system aliases
 alias systemctl='sudo systemctl'
