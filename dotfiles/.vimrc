@@ -202,30 +202,6 @@ vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
 
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
-"autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set nonumber
-
-function! MarkWindowSwap()
-    let g:markedWinNum = winnr()
-endfunction
-
-function! DoWindowSwap()
-    "Mark destination
-    let curNum = winnr()
-    let curBuf = bufnr( "%" )
-    exe g:markedWinNum . "wincmd w"
-    "Switch to source and shuffle dest->source
-    let markedBuf = bufnr( "%" )
-    "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' curBuf
-    "Switch to dest and shuffle source->dest
-    exe curNum . "wincmd w"
-    "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' markedBuf 
-endfunction
-
-nmap <silent> <leader>cw :call MarkWindowSwap()<CR>
-nmap <silent> <leader>cp :call DoWindowSwap()<CR>
 
 function! NumberToggle()
 	if (&relativenumber ==1)
@@ -262,7 +238,7 @@ autocmd FileType arduino,c,cpp set nospell | set expandtab | set softtabstop=2
 
 "Latex bindings
 "set auto spellcheck on latex files only
-autocmd BufNewFile,BufRead *.tex set spell
+autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t | set textwidth=80
 let g:tex_flavor = "latex"
 "set no spell checking in latex comments.
 let g:tex_comment_nospell = 1

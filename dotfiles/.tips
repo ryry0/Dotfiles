@@ -11,13 +11,13 @@ vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
 vim: * search
 vim: % goes to next parenthesis
-vim: Use <leader>cw and <leader>cp to swap windows
 vim: copy previous line with foo here ?foo?[.]["]
 vim: copy following line with foo here /foo/[.]["]
 vim: Use paragraph objects
 vim: holy-grail
 vim: zt/b, move line at cursor to top/bottom of screen
 vim: use :normal command to apply a command to multiple lines
+vim: use :g/pattern/normal to apply a normal command to any line matching pattern
 vim: use C-r / in command line to paste last search
 vim: "0p pastes last yanked text
 vim: "1p pastes last deleted text
