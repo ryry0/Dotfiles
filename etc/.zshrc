@@ -16,7 +16,7 @@ export SUDO_EDITOR="$(which vim)"
 
 # Set PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export PATH=$HOME/Dropbox/Programming/etc/bin:$PATH
+export PATH=$HOME/usr/etc/bin:$PATH
 
 # support colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
