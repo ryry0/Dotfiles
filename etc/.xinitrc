@@ -8,4 +8,4 @@ feh  --bg-scale ~/Dropbox/Dump/He3lv9X.jpg
 syndaemon -k -i 1 -d -R
 unclutter -noevents &
 redshift -l 30.45:-84.25 -t 6500:3400 &
-exec spectrwm
+exec gnome-session

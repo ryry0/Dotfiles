@@ -3,10 +3,13 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
 	exec startx
 
 elif [[ $(tty) = /dev/tty2 ]] ; then
-	sudo setfont ter-214n
+	setfont ter-214n
 	tmux
 
 elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
+	exec tmux -2
+
+elif [[ $TERM = "xterm" ]] ; then
 	exec tmux -2
 fi
 
