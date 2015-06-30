@@ -5,7 +5,7 @@ dir=$(pwd)
 files=".bashrc .vimrc .vim .crawlrc \
 .spectrwm.conf .tmux.conf .juliarc.jl \
 .zshalias .zshcomp .zshfunc .zshkeys .zshopts .zshrc .ryry.zsh-theme \
-.xinitrc .Xresources .mirrorboard.xkb"
+.xinitrc .Xresources .mirrorboard.xkb .tips"
 
 for file in $files; do
     #echo "Moving any existing dotfiles from ~ to $olddir"
