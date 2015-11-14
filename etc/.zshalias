@@ -8,6 +8,7 @@ alias vi='vim'
 alias matlab='matlab -nodesktop -nosplash'
 alias gdb='gdb -tui -q'
 alias ..='cd ..'
+alias grind='valgrind --leak-check=yes'
 
 # system aliases
 alias systemctl='sudo systemctl'

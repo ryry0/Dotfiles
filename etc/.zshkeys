@@ -12,5 +12,9 @@ bindkey '^Y' yank
 bindkey '^N' down-line-or-history
 bindkey '^P' up-line-or-history
 
+# zsh home/end keys
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+
 # zsh expansion
 bindkey ' ' magic-space
