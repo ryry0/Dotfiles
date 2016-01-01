@@ -3,6 +3,7 @@ export MARKPATH=$HOME/.marks
 
 alias sudo='nocorrect sudo '
 alias pacman='sudo pacman --color=auto'
+alias rpaca='sudo rpaca'
 alias pamcan='pacman'
 alias vi='vim'
 alias matlab='matlab -nodesktop -nosplash'
