@@ -13,3 +13,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
+
+echo "Installing vim directories"
+install -dv ~/.temp/bak
+install -dv ~/.temp/swp
+
