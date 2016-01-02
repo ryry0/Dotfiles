@@ -48,6 +48,11 @@ function _completemarks {
 	reply=($(=ls $MARKPATH))
 }
 
+# Mark tab completion
+function _rpaca {
+	reply=($(=rpaca --list-repository-packages))
+}
+
 # Mkdir and cd
 function mkcd {
   if [ ! -n "$1" ]; then
