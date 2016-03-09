@@ -2,13 +2,20 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
+# gooogle
 super + Return
-	firefox
+	google-chrome-stable
 
-# program launcher
+# terminal launcher
 super + space
-	urxvt
+	xdotool search --onlyvisible --classname URxvt windowunmap \
+	|| xdotool search --classname URxvt windowmap \
+	|| urxvt
+
+F4
+	xdotool search --onlyvisible --classname URxvt windowunmap \
+	|| xdotool search --classname URxvt windowmap \
+	|| urxvt
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -83,10 +90,6 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect
-#
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
