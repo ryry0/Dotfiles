@@ -62,6 +62,9 @@ alias mouse-on='synclient touchpadoff=0'
 alias vim-tips='cat ~/.tips | grep -e "^vim"'
 alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
 
+alias hex='printf "%x\n"'
+alias dec='printf "%d\n"'
+
 # Tmux aliases
 alias ka='tmux kill-pane -a'
 alias tkap='tmux kill-pane -a'
@@ -87,6 +90,8 @@ alias mu='make upload'
 alias mc='make clean'
 alias mcm='make clean && make'
 alias mcmu='make clean && make && make upload'
+alias mg='make grind'
+alias mr='make run'
 
 # Git aliases
 alias gch='git checkout'
