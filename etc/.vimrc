@@ -14,6 +14,7 @@ set backspace=indent,eol,start "sets backspace to work like normal
 set exrc "allows local configurations of .vimrc
 "set secure "disables unsafe options in local .vimrc
 "set title
+set showcmd
 
 if has("wildmenu")
 	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
@@ -28,6 +29,28 @@ endif
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+
+function SmoothScroll(up)
+    if a:up
+        let scrollaction=""
+    else
+        let scrollaction=""
+    endif
+    exec "normal " . scrollaction
+    redraw
+    let counter=1
+    while counter<&scroll
+        let counter+=1
+        sleep 5m
+        redraw
+        exec "normal " . scrollaction
+    endwhile
+endfunction
+
+nnoremap <C-U> :call SmoothScroll(1)<Enter>
+nnoremap <C-D> :call SmoothScroll(0)<Enter>
+inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
+inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
 
 set nobackup
 if has("win32")
@@ -218,8 +241,6 @@ nnoremap <f5> :call NumberToggle() <cr>
 
 "maps leader n to calling the number toggle.
 nmap <leader># :call NumberToggle() <cr>
-
-set showcmd
 
 "file styling options
 "tab styling options
