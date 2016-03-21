@@ -10,4 +10,6 @@ sudo mount --rbind /dev dev/
 sudo mount --rbind /run run/
 sudo cp /etc/resolv.conf /mnt/arch/etc/resolv.conf
 
-chroot /mnt/arch /bin/zsh -c exec su ryan
+xhost +local:
+
+sudo chroot /mnt/arch /bin/zsh -c exec su ryan
