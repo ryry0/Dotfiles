@@ -40,6 +40,7 @@ alias sl='ls'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias copy='rsync -aP'
+alias j='jobs'
 
 alias jp='jump'
 alias mk='mark'
@@ -114,6 +115,7 @@ alias gfa='git fetch --all'
 alias gdc='git diff --cached'
 alias gr='git reset'
 alias grh='git reset --hard'
+alias grsuopa='git remote set-url origin --push --add'
 
 # Suffix aliases
 alias -s tex=vim
