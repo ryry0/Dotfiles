@@ -7,7 +7,7 @@ elif [[ $(tty) = /dev/tty2 ]] ; then
 	tmux
 
 elif [[ $TERM = "rxvt-unicode" ]] ; then
-	exec tmux -2
+	 tmux
 fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem
