@@ -10,11 +10,19 @@ super + Return
 super + space
 	xdotool search --onlyvisible --classname URxvt windowunmap \
 	|| xdotool search --classname URxvt windowmap \
+	&& bspc node -t tiled \
+	|| urxvt
+
+F3
+	xdotool search --onlyvisible --classname URxvt windowunmap \
+	|| xdotool search --classname URxvt windowmap \
+	&& bspc node -t tiled \
 	|| urxvt
 
 F4
 	xdotool search --onlyvisible --classname URxvt windowunmap \
 	|| xdotool search --classname URxvt windowmap \
+	&& bspc node -t fullscreen \
 	|| urxvt
 
 # make sxhkd reload its configuration files:
