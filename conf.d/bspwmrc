@@ -14,9 +14,10 @@ bspc config focus_follows_pointer true
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
-bspc rule -a URxvt sticky=on follow=on
-bspc rule -a Gimp desktop=^8 state=floating follow=on
+bspc rule -a URxvt:quake sticky=on follow=on
+bspc rule -a Gimp desktop=^8 floating=on follow=on
 bspc rule -a google-chrome desktop=^2
-bspc rule -a mplayer2 state=floating
+bspc rule -a google-chrome:crx_hmjkmjkepdijhoojdojkdfohbdgmmhki state=floating sticky=on follow=on
+bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
