@@ -14,7 +14,6 @@ set backspace=indent,eol,start "sets backspace to work like normal
 set exrc "allows local configurations of .vimrc
 "set secure "disables unsafe options in local .vimrc
 "set title
-set showcmd
 
 if has("wildmenu")
 	set wildignore+=*.a,*.o,*.aux,*.brf,*.out
@@ -315,3 +314,5 @@ call Iab('begal','\begin{align}<CR><CR>\end{align}<ESC>kcc')
 call Iab('begeqn','\begin{equation*}<CR><CR>\end{equation*}<ESC>kcc')
 call Iab('begaln','\begin{align*}<CR><CR>\end{align*}<ESC>kcc')
 call Iab('begend','\begin{}<CR>\end{}<ESC>k0f{ci{')
+
+set showcmd
