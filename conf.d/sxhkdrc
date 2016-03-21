@@ -3,27 +3,49 @@
 #
 
 # gooogle
-super + Return
+super + shift + g
 	google-chrome-stable
 
-# terminal launcher
-super + space
-	xdotool search --onlyvisible --classname URxvt windowunmap \
-	|| (xdotool search --classname URxvt windowmap \
+super + Return
+	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
+	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
+	; bspc node -t fullscreen) \
+	|| /opt/google/chrome/google-chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+
+
+super + shift + Return
+	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
+	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
 	; bspc node -t tiled) \
-	|| urxvt
+	|| /opt/google/chrome/google-chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+
+#dropdownish google keep
+super + space
+	xdotool search --onlyvisible --classname quake windowunmap \
+	|| ( xdotool search --classname quake windowmap \
+	; bspc node -t fullscreen) \
+	|| urxvt -name quake
+
+
+super + shift + space
+	xdotool search --onlyvisible --classname quake windowunmap \
+	|| (xdotool search --classname quake windowmap \
+	; bspc node -t tiled) \
+	|| urxvt -name quake
+
+
 
 F3
-	xdotool search --onlyvisible --classname URxvt windowunmap \
-	|| (xdotool search --classname URxvt windowmap \
+	xdotool search --onlyvisible --classname quake windowunmap \
+	|| (xdotool search --classname quake windowmap \
 	; bspc node -t tiled) \
-	|| urxvt
+	|| urxvt -name quake
 
 F4
-	xdotool search --onlyvisible --classname URxvt windowunmap \
-	|| ( xdotool search --classname URxvt windowmap \
+	xdotool search --onlyvisible --classname quake windowunmap \
+	|| ( xdotool search --classname quake windowmap \
 	; bspc node -t fullscreen) \
-	|| urxvt
+	|| urxvt -name quake
 
 # make sxhkd reload its configuration files:
 super + Escape
