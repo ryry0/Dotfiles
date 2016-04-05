@@ -33,14 +33,56 @@
 
 # List packages installed in system profile. To search by name, run:
 # $ nix-env -qaP | grep wget
-# environment.systemPackages = with pkgs; [
-#   wget
-# ];
+  environment.systemPackages = with pkgs; [
+
+    ## system utils
+    htop
+    tlp
+    p7zip
+    bc
+    acpi
+
+    ## programming utils
+    git
+    vim
+    tmux
+
+    ## C
+    gcc
+    cmake
+    gnumake
+    gdb
+    strace
+    ctags
+    valgrind
+
+    ## uC utils
+    avrgcclibc
+    avrdude
+    gcc-arm-embedded
+
+    ## scientific computing
+    julia
+    texlive.combined.scheme-minimal
+
+    ## X programs
+    google-chrome
+    rxvt_unicode
+    xorg.xbacklight
+    xclip
+
+    ## ricing
+    unclutter
+    compton
+    redshift
+    feh
+
+    ## other
+    syncthing
+    mplayer
+  ];
 
 # List services that you want to enable:
-
-# Enable the OpenSSH daemon.
-# services.openssh.enable = true;
 
 # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -53,6 +95,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
+    videoDrivers = [ "intel" ];
 
     displayManager.slim.enable = true;
 
@@ -70,8 +113,8 @@
       additionalOptions = ''
         MatchProduct "DLL0665:01 06CB:76AD UNKNOWN"
         Driver "libinput"
-        Option	"Tapping"	"on"
-        Option	"AccelSpeed"	"1"
+        Option  "Tapping" "on"
+        Option  "AccelSpeed"  "1"
         '';
     };
   };
