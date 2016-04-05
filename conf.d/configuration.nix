@@ -77,6 +77,8 @@
     rxvt_unicode
     xorg.xbacklight
     xclip
+    xorg.xkbcomp
+    xdotool
 
     ## ricing
     unclutter
@@ -93,6 +95,26 @@
 
 # Enable CUPS to print documents.
   services.printing.enable = true;
+
+# Configure TLP
+  services.tlp.enable = true;
+  services.tlp.extraConfig = ''
+  CPU_SCALING_GOVERNOR_ON_AC=performance
+  CPU_SCALING_GOVERNOR_ON_BAT=ondemand
+  SCHED_POWERSAVE_ON_AC=0
+  SCHED_POWERSAVE_ON_BAT=1
+  ENERGY_PERF_POLICY_ON_AC=performance
+  ENERGY_PERF_POLICY_ON_BAT=powersave
+  PCIE_ASPM_ON_AC=performance
+  PCIE_ASPM_ON_BAT=powersave
+  WIFI_PWR_ON_AC=1
+  WIFI_PWR_ON_BAT=5
+  RUNTIME_PM_ON_AC=on
+  RUNTIME_PM_ON_BAT=auto
+  USB_AUTOSUSPEND=1
+  USB_BLACKLIST_WWAN=1
+  DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+  '';
 
 # Enable zsh
   programs.zsh.enable = true;
@@ -116,13 +138,26 @@
 
     synaptics = {
       enable = true;
+      tapButtons = true;
+      fingersMap = [1 3 2];
+      horizTwoFingerScroll = true;
+      vertTwoFingerScroll = true;
+      scrollDelta = -72;
+      palmDetect = true;
+      palmMinWidth = 11;
+      palmMinZ = 100;
 
       additionalOptions = ''
-        MatchProduct "DLL0665:01 06CB:76AD UNKNOWN"
-        Driver "libinput"
-        Option  "Tapping" "on"
         Option  "AccelSpeed"  "1"
         '';
+
+        #MatchProduct "DLL0665:01 06CB:76AD UNKNOWN"
+        #Driver "libinput"
+        #Option  "Tapping" "on"
+        #Option "VertTwoFingerScroll" "on"
+        #Option "HorizTwoFingerScroll" "on"
+        #Option "VertScrollDelta" "-128"
+        #Option "HorizScrollDelta" "-128"
     };
   };
 
