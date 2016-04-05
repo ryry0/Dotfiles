@@ -14,6 +14,10 @@
   boot.loader.gummiboot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+# kernel configs
+  boot.blacklistedKernelModules = [ "psmouse" ];
+  boot.extraKernelParams = [ "quiet" ];
+
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
@@ -41,6 +45,9 @@
     p7zip
     bc
     acpi
+    pciutils
+    usbutils
+    lsof
 
     ## programming utils
     git
