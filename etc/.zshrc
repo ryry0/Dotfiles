@@ -6,7 +6,7 @@ elif [[ $(tty) = /dev/tty2 ]] ; then
 	sudo setfont ter-214n
 	tmux
 
-elif [[ $TERM = "rxvt-unicode" ]] ; then
+elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
 	 tmux
 fi
 
