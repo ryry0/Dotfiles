@@ -11,11 +11,11 @@ elif [[ $TERM = "rxvt-unicode" ]] ; then
 fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem
-LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
+# LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
 export SUDO_EDITOR="$(which vim)"
 
 # Set PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$PATH
 export PATH=$HOME/usr/bin:$PATH
 
 # support colors in less
