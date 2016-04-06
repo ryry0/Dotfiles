@@ -6,45 +6,42 @@
 super + shift + g
 	google-chrome-stable
 
-super + Return
+F9
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
-	; bspc node -t fullscreen) \
-	|| /opt/google/chrome/google-chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+	&& bspc window -t floating=on && bspc window -t fullscreen=on) \
+	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
 
-super + shift + Return
+F10
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
-	; bspc node -t tiled) \
-	|| /opt/google/chrome/google-chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+	&& bspc window -t floating=off && bspc window -t fullscreen=off) \
+	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
 #dropdownish google keep
 super + space
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| ( xdotool search --classname quake windowmap \
-	; bspc node -t fullscreen) \
+	; bspc window -t fullscreen) \
 	|| urxvt -name quake
-
 
 super + shift + space
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| (xdotool search --classname quake windowmap \
-	; bspc node -t tiled) \
+	; bspc window -t tiled) \
 	|| urxvt -name quake
-
-
 
 F3
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| (xdotool search --classname quake windowmap \
-	; bspc node -t tiled) \
+	&& bspc window -t floating=off && bspc window -t fullscreen=off) \
 	|| urxvt -name quake
 
 F4
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| ( xdotool search --classname quake windowmap \
-	; bspc node -t fullscreen) \
+	&& bspc window -t fullscreen=off && bspc window -t floating=on && bspc window -t fullscreen=on) \
 	|| urxvt -name quake
 
 # make sxhkd reload its configuration files:
@@ -93,7 +90,7 @@ super + ctrl + {x,y,z}
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+	bspc window -{f,s} {left, down, up, right}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -119,7 +116,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,window -d} '^{1-9,10}'
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
