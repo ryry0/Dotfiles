@@ -238,6 +238,12 @@ endfunc
 
 nnoremap <f5> :call NumberToggle() <cr>
 
+"add automatic line changing in console mode
+nnoremap : :set norelativenumber<cr>:
+cnoremap <silent> <CR> <CR>:set relativenumber<CR>
+cnoremap <silent> <Esc> <Esc>:set relativenumber<CR>
+cnoremap <silent> <C-c> <C-c>:set relativenumber<CR>
+
 "maps leader n to calling the number toggle.
 nmap <leader># :call NumberToggle() <cr>
 
