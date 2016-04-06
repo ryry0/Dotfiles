@@ -131,8 +131,8 @@
     desktopManager.default = "none";
     desktopManager.xterm.enable = false;
 
-    windowManager.default = "spectrwm";
-    windowManager.spectrwm = {
+    windowManager.default = "bspwm";
+    windowManager.bspwm = {
       enable = true;
     };
 
