@@ -11,7 +11,7 @@ xkb_keymap {
   xkb_types     { include "complete"      };
   xkb_compat    { include "complete"      };
   xkb_symbols   {
-    include "pc+us+inet(evdev)"
+    include "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)"
 
 // Here's the line to make capslock into the modifier key.
     key <CAPS> {symbols[Group1] = [ Alt_L ] };
