@@ -1,4 +1,4 @@
-#xrdb -merge ~/.Xresources
+xrdb -merge ~/.themes.d/default.Xresources
 #syncthing -no-browser &
 xkbcomp ~/.metacaps.xkb $DISPLAY 2> /dev/null
 xbacklight -set 40 

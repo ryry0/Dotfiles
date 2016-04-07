@@ -6,7 +6,7 @@ olddir=~/.dotfiles_old
 files=".bashrc .vimrc .vim .crawlrc \
 .spectrwm.conf .tmux.conf .juliarc.jl \
 .zshalias .zshcomp .zshfunc .zshkeys .zshopts .zshrc .ryry.zsh-theme \
-.xinitrc .Xresources .mirrorboard.xkb .tips .metacaps.xkb"
+.xinitrc .Xresources .mirrorboard.xkb .tips .metacaps.xkb .themes.d"
 
 echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do

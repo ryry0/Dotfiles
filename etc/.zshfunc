@@ -67,3 +67,7 @@ function mkcd {
 function cgrep {
 	grep . *.{h,hpp,c,cc,cpp} | grep "$@" -i
 }
+
+function theme {
+	xrdb -merge ~/.themes.d/$1.Xresources
+}
