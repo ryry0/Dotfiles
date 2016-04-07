@@ -45,4 +45,4 @@ source ~/.zshalias 	# Source aliases
 source ~/.zshfunc	# Source functions
 source ~/.zshcomp	# Source completions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# source rdir.sh
+[ -f ~/usr/bin/rdir.sh ] &&  source rdir.sh
