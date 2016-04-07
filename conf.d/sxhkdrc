@@ -6,6 +6,7 @@
 super + shift + g
 	google-chrome-stable
 
+#dropdownish google keep
 F9
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
@@ -19,18 +20,8 @@ F10
 	&& bspc window -t floating=off && bspc window -t fullscreen=off) \
 	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
-#dropdownish google keep
 super + space
-	xdotool search --onlyvisible --classname quake windowunmap \
-	|| ( xdotool search --classname quake windowmap \
-	; bspc window -t fullscreen) \
-	|| urxvt -name quake
-
-super + shift + space
-	xdotool search --onlyvisible --classname quake windowunmap \
-	|| (xdotool search --classname quake windowmap \
-	; bspc window -t tiled) \
-	|| urxvt -name quake
+	urxvt
 
 F3
 	xdotool search --onlyvisible --classname quake windowunmap \
