@@ -1,6 +1,6 @@
 #xrdb -merge ~/.Xresources
 #syncthing -no-browser &
-#xkbcomp ~/.metacaps.xkb $DISPLAY 2> /dev/null
+xkbcomp ~/.metacaps.xkb $DISPLAY 2> /dev/null
 xbacklight -set 40 
 #feh  --bg-scale ~/sync/Dump/He3lv9X.jpg
 syndaemon -k -i 1 -d -R
