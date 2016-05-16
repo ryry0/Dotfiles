@@ -10,6 +10,9 @@ zsh: !* gives you all the arguments of the last command.
 zsh: git remote set-url --add --push origin <alternate origin>
 zsh: use bracket expansion: mv a a.bak -> mv a{,.bak}
 zsh: pipe to xargs -n 1 to use each argument once -P to parallelize
+zsh: nixos-rebuild switch --upgrade to rebuild nixos
+zsh: nix-env --delete-generations old
+zsh: nix-collect-garbage -d : run as root
 
 vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
