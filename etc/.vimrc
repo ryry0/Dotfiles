@@ -77,19 +77,17 @@ else
 	set undodir=$HOME/.temp/und//
 	set undofile
 	set viminfo+=n~/.temp/
-	colorscheme nucolors
 	let g:tmux_navigator_no_mappings = 1
 
 	nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 	nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
 	nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
 	nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-	set background=dark
 endif
 
 
-set relativenumber | set number
-"set number
+"set relativenumber | set number
+set number
 set nocompatible
 set hidden
 set cursorline
@@ -124,8 +122,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-cnoremap jj <C-f>
-inoremap jj <ESC>
+cnoremap jk <C-f>
+inoremap jk <ESC>
+cnoremap kj <C-f>
+inoremap kj <ESC>
 
 nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
@@ -133,7 +133,7 @@ nnoremap <C-k> <C-b>
 "remove annoying keys
 nnoremap <F1> <nop>
 nnoremap Q <nop>
-nnoremap K <nop>
+nnoremap K kJ
 vnoremap K <nop>
 
 let mapleader=" "
@@ -176,7 +176,7 @@ command Edos e ++ff=dos
 command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
 
 "clears all trailing whitespaces
-nmap <leader>$ :%s/\s\+$// <CR>
+nmap <leader><TAB> :%s/\s\+$// <CR>
 
 "command line shortcuts
 nnoremap <leader>q :q<CR>
@@ -222,8 +222,8 @@ nnoremap vi[ %vi[
 "late parenthesis mapping. Surrounds visually selected text in parens
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
 
-autocmd InsertEnter * :set norelativenumber | set number
-autocmd InsertLeave * :set nonumber | set relativenumber | set number
+"autocmd InsertEnter * :set norelativenumber | set number
+"autocmd InsertLeave * :set nonumber | set relativenumber | set number
 
 function! NumberToggle()
 	if (&relativenumber ==1)
@@ -239,10 +239,10 @@ endfunc
 nnoremap <f5> :call NumberToggle() <cr>
 
 "add automatic line changing in console mode
-nnoremap : :set norelativenumber<cr>:
-cnoremap <silent> <CR> <CR>:set relativenumber<CR>
-cnoremap <silent> <Esc> <Esc>:set relativenumber<CR>
-cnoremap <silent> <C-c> <C-c>:set relativenumber<CR>
+"nnoremap : :set norelativenumber<cr>:
+"cnoremap <silent> <CR> <CR>:set relativenumber<CR>
+"cnoremap <silent> <Esc> <Esc>:set relativenumber<CR>
+"cnoremap <silent> <C-c> <C-c>:set relativenumber<CR>
 
 "maps leader n to calling the number toggle.
 nmap <leader># :call NumberToggle() <cr>
@@ -255,7 +255,7 @@ nmap <leader># :call NumberToggle() <cr>
 "trailing whitespace is highlighted
 "no indent of namespaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd FileType arduino,c,cpp set nospell | set expandtab | set softtabstop=2
+autocmd FileType elm,arduino,c,cpp set nospell | set expandtab | set softtabstop=2
 			\| set tabstop=2 | set shiftwidth=2
 			\| match ExtraWhitespace '\s\+$' | set cino=N-s
 			\| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
