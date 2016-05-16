@@ -31,7 +31,7 @@ URxvt.borderColor: [90]#EEEEEE
 
 URxvt*font: xft:inconsolata:size=13:antialias=false
 
-URxvt*colorBD:            #ffffff
+#URxvt*colorBD:            #ffffff
 URxvt*cursorColor:        #6D878D
 URxvt*cursorColor2:       #151515
 
