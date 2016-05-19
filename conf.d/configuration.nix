@@ -21,7 +21,7 @@
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "hephaestus"; # Define your hostname.
     networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networking.enableB43Firmware = true;
 
@@ -146,10 +146,7 @@
       palmDetect = true;
       palmMinWidth = 11;
       palmMinZ = 100;
-
-      additionalOptions = ''
-        Option  "AccelSpeed"  "1"
-        '';
+      accelFactor = "0.1";
 
         #MatchProduct "DLL0665:01 06CB:76AD UNKNOWN"
         #Driver "libinput"
