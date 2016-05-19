@@ -24,7 +24,7 @@ let s:tmux_is_last_pane = 0
 au WinEnter * let s:tmux_is_last_pane = 0
 
 " Like `wincmd` but also change tmux panes instead of vim windows when needed.
-function! s:TmuxWinCmd(direction)
+function! TmuxWinCmd(direction)
   if s:InTmuxSession()
     call s:TmuxAwareNavigate(a:direction)
   else
@@ -61,11 +61,11 @@ function! s:VimNavigate(direction)
   endtry
 endfunction
 
-command! TmuxNavigateLeft call <SID>TmuxWinCmd('h')
-command! TmuxNavigateDown call <SID>TmuxWinCmd('j')
-command! TmuxNavigateUp call <SID>TmuxWinCmd('k')
-command! TmuxNavigateRight call <SID>TmuxWinCmd('l')
-command! TmuxNavigatePrevious call <SID>TmuxWinCmd('p')
+command! TmuxNavigateLeft call TmuxWinCmd('h')
+command! TmuxNavigateDown call TmuxWinCmd('j')
+command! TmuxNavigateUp call TmuxWinCmd('k')
+command! TmuxNavigateRight call TmuxWinCmd('l')
+command! TmuxNavigatePrevious call TmuxWinCmd('p')
 
 if s:UseTmuxNavigatorMappings()
   nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
