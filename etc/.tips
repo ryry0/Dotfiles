@@ -13,6 +13,7 @@ zsh: pipe to xargs -n 1 to use each argument once -P to parallelize
 zsh: nixos-rebuild switch --upgrade to rebuild nixos
 zsh: nix-env --delete-generations old
 zsh: nix-collect-garbage -d : run as root
+zsh: nix-store --gc
 
 vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
