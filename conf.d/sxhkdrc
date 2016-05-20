@@ -7,14 +7,14 @@ super + shift + g
 	google-chrome-stable
 
 #dropdownish google keep
-F9
+F10
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
 	&& bspc node -t fullscreen) \
 	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
 
-F10
+F9
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
 	&& bspc node -t tiled) \
@@ -82,6 +82,10 @@ super + ctrl + {x,y,z}
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west, south, north, east}
+
+# focus the node in the given direction
+alt + shift + {h,l}
+	bspc node -f {west, east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
