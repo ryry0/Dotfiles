@@ -42,6 +42,9 @@ set pastetoggle=<F2> "map it in insert mode
 set showmode         "shows modeline on statusline
 set showcmd          "shows the current command on statusline
 
+"look for tags in current directory, then move up until root
+set tags=./tags;/
+
 "filetype options
 filetype on
 filetype indent on
