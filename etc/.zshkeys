@@ -18,3 +18,23 @@ bindkey "${terminfo[kend]}" end-of-line
 
 # zsh expansion
 bindkey ' ' magic-space
+
+function _cd_parent() {
+        pushd .. > /dev/null
+        zle      reset-prompt
+        echo
+        ls
+}
+
+zle -N _cd_parent
+bindkey '^U' _cd_parent
+
+function _cd_undo() {
+        popd > /dev/null
+        zle      reset-prompt
+        echo
+        ls
+}
+
+zle -N _cd_undo
+bindkey '^J' _cd_undo
