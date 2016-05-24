@@ -5,9 +5,6 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
 elif [[ $(tty) = /dev/tty2 ]] ; then
 	sudo setfont ter-214n
 	tmux
-
-elif [[ $TERM = "rxvt-unicode-256color" ]] ; then
-	exec tmux
 fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem

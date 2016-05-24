@@ -27,13 +27,13 @@ F3
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| (xdotool search --classname quake windowmap \
 	&& bspc node -t tiled) \
-	|| urxvt -name quake
+	|| urxvt -name quake -e tmux
 
 F4
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| ( xdotool search --classname quake windowmap \
 	&& bspc node -t fullscreen) \
-	|| urxvt -name quake
+	|| urxvt -name quake -e tmux
 
 # make sxhkd reload its configuration files:
 super + Escape
