@@ -109,6 +109,14 @@ inoremap jk <ESC>
 cnoremap kj <C-f>
 inoremap kj <ESC>
 
+inoremap Jk <ESC>
+inoremap JK <ESC>
+inoremap jK <ESC>
+
+inoremap kJ <ESC>
+inoremap KJ <ESC>
+inoremap Kj <ESC>
+
 nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
 
@@ -206,12 +214,6 @@ nnoremap vi[ %vi[
 "late parenthesis mapping. Surrounds visually selected text in parens
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
 
-"autocommands
-autocmd InsertEnter * :set norelativenumber | set number
-autocmd InsertLeave * :set nonumber | set relativenumber | set number
-"resize vimsplits when new tmux window is opened
-autocmd VimResized * wincmd =
-
 nnoremap <C-U> :call SmoothScroll(1)<Enter>
 nnoremap <C-D> :call SmoothScroll(0)<Enter>
 inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
@@ -220,11 +222,11 @@ inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
 nnoremap <f5> :call NumberToggle() <cr>
 nmap <leader># :call NumberToggle() <cr>
 
-"add automatic line changing in console mode
-"nnoremap : :set norelativenumber<cr>:
-"cnoremap <silent> <CR> <CR>:set relativenumber<CR>
-"cnoremap <silent> <Esc> <Esc>:set relativenumber<CR>
-"cnoremap <silent> <C-c> <C-c>:set relativenumber<CR>
+"autocommands
+autocmd InsertEnter * :set norelativenumber | set number
+autocmd InsertLeave * :set nonumber | set relativenumber | set number
+"resize vimsplits when new tmux window is opened
+autocmd VimResized * wincmd =
 
 "file styling options
 "tab styling options
@@ -239,12 +241,14 @@ autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
                         \| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
                         \| set formatoptions+=t | set textwidth=80
+                        \| Cabbrev
 
 autocmd Filetype make setlocal noexpandtab
 
 "Latex bindings
 "set auto spellcheck on latex files only
-autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t | set textwidth=80
+autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t 
+                        \| set textwidth=80 | LatAbbrev
 let g:tex_flavor = "latex"
 "set no spell checking in latex comments.
 let g:tex_comment_nospell = 1
@@ -278,55 +282,4 @@ function SmoothScroll(up)
     endwhile
 endfunction
 
-"helper to delete empty space character
-"from Vim Manual
-function! Eatchar()
-        let c = nr2char(getchar())
-        return (c=~ '\s')? '': c
-endfunction
-
-"replace abbrev if we're not in content or unwanted place
-"from Luc Hermitte
-function! MapNoContext(key,seq)
-        let syn = synIDattr(synID(line('.'),col('.')-1,1),'name')
-        if syn =~? 'comment\|string\|character\|doxygen'
-                return a:key
-        else
-                exe'return "' .
-                \ substitute( a:seq, '\\<\(.\{-}\)\\>', '"."\\<\1>"."', 'g' ) . '"'
-        endif
-endfunction
-
-"create abbrev suitable for mapnocontext
-"from Vladimir Marek
-function! Iab (ab, full)
-        exe "iab <silent> <buffer> ".a:ab." <C-R>=MapNoContext('"
-        \ a:ab."', '".escape (a:full.'<C-R>=Eatchar()<CR>', '<>\"').
-        \"')<CR>"
-endfunction
-
-"C abbreviations :
-call Iab('incl', '#include <><Left>')
-call Iab('defi', '#define ')
-call Iab('fori', 'for (int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
-call Iab('foru', 'for (unsigned int i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
-call Iab('fors', 'for (size_t i = 0; i <; ++i) {<CR><CR>}<UP><UP><ESC>0f<a ')
-call Iab('forb', 'for (;;) {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('whil', 'while () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('ifelse', 'if () {<CR><CR>}<CR>else {<CR><CR>}<ESC>5k0f(a')
-call Iab('ifb', 'if () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('elib', 'else if () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('elb', 'else {<CR>}<ESC>O')
-call Iab('swb', 'switch () {<CR><CR>}<UP><UP><ESC>0f(a')
-call Iab('intmain', 'int main(int argc, char ** argv) {<CR>}<ESC>O')
-call Iab('intmainb', 'int main() {<CR>}<ESC>O')
-call Iab('bb', '{<CR>}<ESC>O')
-call Iab('ifnd', '#ifndef<CR>#define<CR>#endif<ESC>2kA')
-call Iab('begenu','\begin{enumerate}<CR>\item <CR>\end{enumerate}<ESC>kcc')
-call Iab('begitem','\begin{itemize}<CR>\item <CR>\end{itemize}<ESC>kcc')
-call Iab('begeq','\begin{equation}<CR><CR>\end{equation}<ESC>kcc')
-call Iab('begal','\begin{align}<CR><CR>\end{align}<ESC>kcc')
-call Iab('begeqn','\begin{equation*}<CR><CR>\end{equation*}<ESC>kcc')
-call Iab('begaln','\begin{align*}<CR><CR>\end{align*}<ESC>kcc')
-call Iab('begend','\begin{}<CR>\end{}<ESC>k0f{ci{')
 
