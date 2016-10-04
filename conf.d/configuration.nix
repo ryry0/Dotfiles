@@ -11,12 +11,12 @@
     ];
 
 # Use the gummiboot efi boot loader.
-  boot.loader.gummiboot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
 # kernel configs
   boot.blacklistedKernelModules = [ "psmouse" ];
-  boot.extraKernelParams = [ "quiet" ];
+  boot.kernelParams = [ "quiet" ];
 
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
@@ -114,6 +114,7 @@
   USB_AUTOSUSPEND=1
   USB_BLACKLIST_WWAN=1
   DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+  SOUND_POWER_SAVE_ON_BAT=0
   '';
 
 # Enable zsh
@@ -142,7 +143,7 @@
       fingersMap = [1 3 2];
       horizTwoFingerScroll = true;
       vertTwoFingerScroll = true;
-      scrollDelta = -72;
+      scrollDelta = -128;
       palmDetect = true;
       palmMinWidth = 11;
       palmMinZ = 100;
