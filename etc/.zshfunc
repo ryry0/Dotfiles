@@ -71,3 +71,7 @@ function cgrep {
 function theme {
 	xrdb -merge ~/.themes.d/$1.Xresources
 }
+
+function wordfreq {
+        tr -c '[:alnum:]' '[\n*]' < "$@" | sort | uniq -c | sort -nr
+}
