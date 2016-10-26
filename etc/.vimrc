@@ -106,6 +106,11 @@ endif
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+nnoremap : :set norelativenumber \| set number<CR>:
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
