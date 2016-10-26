@@ -59,7 +59,7 @@ filetype plugin on
 filetype plugin indent on
 
 if has("wildmenu")
-        set wildignore+=*.a,*.o,*.aux,*.brf,*.out
+        set wildignore+=*.a,*.o,*.aux,*.brf,*.out,*.x
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
         set wildignore+=.DS_Store,.git,.hg,.svn
         set wildignore+=*~,*.swp,*.tmp
