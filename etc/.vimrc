@@ -252,10 +252,16 @@ autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
 
 autocmd Filetype make setlocal noexpandtab
 
+"Markdown Bindings
+autocmd BufNewFile,BufRead *.md set spell | set formatoptions+=t | set softtabstop=2
+                        \| set tabstop=2 | set shiftwidth=2
+                        \| set textwidth=80 | LatAbbrev
+
 "Latex bindings
 "set auto spellcheck on latex files only
 autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t 
                         \| set textwidth=80 | LatAbbrev
+
 let g:tex_flavor = "latex"
 "set no spell checking in latex comments.
 let g:tex_comment_nospell = 1
