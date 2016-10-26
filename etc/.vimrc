@@ -21,8 +21,15 @@ set nobackup    "disable backup files
 
 set backspace=indent,eol,start "sets backspace to work like normal
 
-"enable mouse support
+"enable mouse support but remove mouse left click
 set mouse=a
+nmap <LeftMouse> <nop>
+imap <LeftMouse> <nop>
+vmap <LeftMouse> <nop>
+
+nmap <2-LeftMouse> <nop>
+imap <2-LeftMouse> <nop>
+vmap <2-LeftMouse> <nop>
 
 "use z= to use spellcheck
 set spelllang=en_us
