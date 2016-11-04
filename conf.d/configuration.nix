@@ -70,7 +70,7 @@
 
     ## scientific computing
     julia
-    texlive.combined.scheme-minimal
+    texlive.combined.scheme-full
 
     ## X programs
     google-chrome
