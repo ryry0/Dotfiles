@@ -75,3 +75,11 @@ function theme {
 function wordfreq {
         tr -c '[:alnum:]' '[\n*]' < "$@" | sort | uniq -c | sort -nr
 }
+
+function mdtopdf {
+        pandoc -s "$1" -o "$(basename "$1" .md).pdf" -V geometry:margin=2cm
+}
+
+function mdtohtml {
+        pandoc -s "$1" -o "$(basename "$1" .md).html" --mathjax
+}
