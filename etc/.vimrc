@@ -61,7 +61,7 @@ filetype plugin indent on
 if has("wildmenu")
         set wildignore+=*.a,*.o,*.aux,*.brf,*.out,*.x
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
-        set wildignore+=.DS_Store,.git,.hg,.svn
+        set wildignore+=.DS_Store,.git,.hg,.svn,*.pdf
         set wildignore+=*~,*.swp,*.tmp
         set wildmenu
         set wildignorecase
@@ -158,6 +158,7 @@ nnoremap <leader>t <C-t>
 vnoremap <leader>] <C-]>
 vnoremap <leader>t <C-t>
 
+"X related buffer mappings
 noremap <leader>y "+y
 noremap <leader>Y "+Y
 noremap <leader>p "+p
@@ -172,12 +173,19 @@ nnoremap q; q:
 "jumps back if you have made a local edit
 noremap <leader>; g;g;
 
+"buffer related mappings
 "opens previous buffered file.
 nmap <leader>e :e#<CR>
+nnoremap <leader>b :ls<CR>:b<SPACE>
+nnoremap <leader>l :ls<CR>
+
+"mistyped B->b autocorrect
+cnoreabbrev <expr> B ((getcmdtype() is# ':' && getcmdline() is# 'B')?('b'):('B'))
 
 "conversion mappings
 command Edos e ++ff=dos
 command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
+
 
 "clears all trailing whitespaces
 nmap <leader><TAB> :%s/\s\+$// <CR>
@@ -186,11 +194,8 @@ nmap <leader><TAB> :%s/\s\+$// <CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>x :x<CR>
 
 nnoremap <leader>s :%s
-
-nnoremap <leader>b  :b
 
 "map leader v to ctrl v
 nmap <leader>v <C-v>
@@ -258,8 +263,8 @@ autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
 autocmd Filetype make setlocal noexpandtab
 
 "Markdown Bindings
-autocmd BufNewFile,BufRead *.md set spell | set formatoptions+=t | set softtabstop=2
-                        \| set tabstop=2 | set shiftwidth=2
+autocmd BufNewFile,BufRead *.md set spell | set formatoptions+=t | set softtabstop=4
+                        \| set tabstop=4 | set shiftwidth=4
                         \| set textwidth=80 | LatAbbrev
 
 "Latex bindings
