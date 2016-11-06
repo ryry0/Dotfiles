@@ -1,0 +1,7 @@
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+ZSH_HIGHLIGHT_STYLES[alias]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[function]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan,bold
+ZSH_HIGHLIGHT_STYLES[path]=fg=magenta
