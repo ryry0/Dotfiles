@@ -10,6 +10,7 @@ alias matlab='matlab -nodesktop -nosplash'
 alias gdb='gdb -tui -q'
 alias ..='cd ..'
 alias grind='valgrind --leak-check=yes'
+alias hangups='hangups --col-scheme solarized-dark'
 
 # system aliases
 alias systemctl='sudo systemctl'
