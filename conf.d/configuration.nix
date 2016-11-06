@@ -19,6 +19,7 @@
   boot.kernelParams = [ "quiet" ];
 
   hardware.enableAllFirmware = true;
+  hardware.bluetooth.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "hephaestus"; # Define your hostname.
@@ -48,6 +49,7 @@
     pciutils
     usbutils
     lsof
+    bluez
 
     ## programming utils
     git
