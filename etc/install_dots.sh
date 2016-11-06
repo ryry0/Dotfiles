@@ -5,8 +5,9 @@ olddir=~/.dotfiles_old
 # list of files/folders to symlink in homedir
 files=".bashrc .vimrc .vim .crawlrc \
 .spectrwm.conf .tmux.conf .juliarc.jl \
-.zshalias .zshcomp .zshfunc .zshkeys .zshopts .zshrc .ryry.zsh-theme \
-.xinitrc .Xresources .mirrorboard.xkb .tips .metacaps.xkb .themes.d"
+.zshalias .zshcomp .zshfunc .zshkeys .zshopts .zshrc .ryry.zsh-theme .zshhigh \
+.xinitrc .Xresources .mirrorboard.xkb .tips .metacaps.xkb .themes.d \
+.fehbg.sh .muttrc"
 
 echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
