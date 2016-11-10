@@ -55,7 +55,7 @@ function! LatAbbrev()
         call Iab('begeqn','\begin{equation*}<CR><CR>\end{equation*}<ESC>kcc')
         call Iab('begaln','\begin{align*}<CR><CR>\end{align*}<ESC>kcc')
         call Iab('begend','\begin{}<CR>\end{}<ESC>k0f{ci{')
-        call Iab('sli','\includegraphics[page=,width=\textdwidth]{\slides}<ESC>F,i')
+        call Iab('sli','\includegraphics[page=,width=\textwidth]{\slides}<ESC>F,i')
         call Iab('slif','\includepdf[pages=]{\slides}<ESC>F=a')
 endfunction
 
