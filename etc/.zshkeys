@@ -3,6 +3,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 bindkey -M vicmd v edit-command-line
 
 # zsh emacs keys
