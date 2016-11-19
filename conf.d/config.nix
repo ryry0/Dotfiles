@@ -1,4 +1,5 @@
 {
+  allowUnfree = true;
   packageOverrides = pkgs_: with pkgs_; {
     all = with pkgs; buildEnv {
       name = "all";
@@ -39,13 +40,13 @@
             ## uC utils
             avrgcclibc
             avrdude
-            gcc-arm-embedded
+            #gcc-arm-embedded
 
             ## android programming
             android-studio
 
             ## elm
-            elm
+            elmPackages.elm
 
             ## rust
             rustc
@@ -57,7 +58,7 @@
             python3
 
             ## X programs
-            google-chrome
+            google-chrome-dev
             rxvt_unicode
             xorg.xbacklight
             xclip
@@ -66,6 +67,7 @@
             mupdf
             calibre
             xournal
+            xorg.libxcb
 
             ## ricing
             unclutter
@@ -79,7 +81,6 @@
             links2
             crawl
             mutt
-
       ];
     };
   };
