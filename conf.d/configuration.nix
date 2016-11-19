@@ -40,57 +40,6 @@
 # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
 
-    ## system utils
-    htop
-    tlp
-    p7zip
-    bc
-    acpi
-    pciutils
-    usbutils
-    lsof
-    bluez
-
-    ## programming utils
-    git
-    vim
-    tmux
-
-    ## C
-    gcc
-    cmake
-    gnumake
-    gdb
-    strace
-    ctags
-    valgrind
-
-    ## uC utils
-    avrgcclibc
-    avrdude
-    gcc-arm-embedded
-
-    ## scientific computing
-    julia
-    texlive.combined.scheme-full
-
-    ## X programs
-    google-chrome
-    rxvt_unicode
-    xorg.xbacklight
-    xclip
-    xorg.xkbcomp
-    xdotool
-
-    ## ricing
-    unclutter
-    compton
-    redshift
-    feh
-
-    ## other
-    syncthing
-    mplayer
   ];
 
 # List services that you want to enable:
