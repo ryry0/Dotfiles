@@ -31,6 +31,8 @@
             ctags
             valgrind
             cmocka
+            pkgconfig
+            doxygen
 
             ## c libs
             ncurses
@@ -38,9 +40,7 @@
             mesa
 
             ## uC utils
-            avrgcclibc
             avrdude
-            #gcc-arm-embedded
 
             ## android programming
             android-studio
@@ -50,6 +50,7 @@
 
             ## rust
             rustc
+            cargo
 
             ## scientific computing
             julia
@@ -58,16 +59,16 @@
             python3
 
             ## X programs
+            xorg.xbacklight
+            xorg.xkbcomp
+            xorg.libxcb
             google-chrome-dev
             rxvt_unicode
-            xorg.xbacklight
             xclip
-            xorg.xkbcomp
             xdotool
             mupdf
             calibre
             xournal
-            xorg.libxcb
 
             ## ricing
             unclutter
