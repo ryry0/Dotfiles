@@ -127,6 +127,9 @@ alias em='elm make'
 alias er='elm reactor'
 alias ep='elm package'
 
+# nixos clean alias
+alias nix-clean='nix-env --delte-generations old; nix-collect-garbage -d; nix-store --gc'
+
 # Suffix aliases
 alias -s tex=vim
 alias -s cpp=vim
@@ -134,3 +137,4 @@ alias -s conf=vim
 alias -s c=vim
 alias -s hpp=vim
 alias -s h=vim
+
