@@ -44,4 +44,6 @@ source ~/.zshfunc	# Source functions
 source ~/.zshcomp	# Source completions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/usr/bin/rdir.sh ] &&  source rdir.sh
-[ -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&  source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && source ~/.zshhigh
+[ -f ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+        source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
+        source ~/.zshhigh

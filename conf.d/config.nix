@@ -17,6 +17,7 @@
             dstat
             lsof
             colordiff
+            zsh-syntax-highlighting
 
             ## programming utils
             git
