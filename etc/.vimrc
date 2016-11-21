@@ -36,8 +36,9 @@ set spelllang=en_us
 
 "formatting and indentation
 set lbr "don't break words in middle
-set expandtab
+set expandtab "replace all tabs with spaces
 
+"indent settings
 set autoindent
 set copyindent
 set smartindent
@@ -58,6 +59,7 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
+"wildmenu popup settings
 if has("wildmenu")
         set wildignore+=*.a,*.o,*.aux,*.brf,*.out,*.x
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
@@ -68,7 +70,7 @@ if has("wildmenu")
         set wildmode=longest:full,full
 endif
 
-
+"win32 specific mappings
 if has("win32")
         if has("gui_running")
                 set guifont=Consolas:h10:cANSI
@@ -102,20 +104,22 @@ endif
 
 
 "control mappings
-"sets intuitive word wrapped line movement
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+"set c-p/n to work like up/down in command mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 nnoremap : :set norelativenumber \| set number<CR>:
 
+"sets intuitive word wrapped line movement
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+"normal/command mode esc mappings
 cnoremap jk <C-f>
 inoremap jk <ESC>
 cnoremap kj <C-f>
@@ -129,6 +133,7 @@ inoremap kJ <ESC>
 inoremap KJ <ESC>
 inoremap Kj <ESC>
 
+"move up and down one screen with c-j/k
 nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
 
@@ -138,7 +143,9 @@ nnoremap Q <nop>
 nnoremap K kJ
 vnoremap K <nop>
 
+"set leader to spacebar
 let mapleader=" "
+
 "clears the highlight from the search
 nmap <silent> <leader><space> :nohlsearch <CR>
 
@@ -231,17 +238,20 @@ nnoremap vi[ %vi[
 "late parenthesis mapping. Surrounds visually selected text in parens
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
 
+"smooth scrolling mappings
 nnoremap <C-U> :call SmoothScroll(1)<Enter>
 nnoremap <C-D> :call SmoothScroll(0)<Enter>
 inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
 inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
 
+"relative number toggle map
 nnoremap <f5> :call NumberToggle() <cr>
 nmap <leader># :call NumberToggle() <cr>
 
-"autocommands
+"autocommands to change relativenumber
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set nonumber | set relativenumber | set number
+
 "resize vimsplits when new tmux window is opened
 autocmd VimResized * wincmd =
 
