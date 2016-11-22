@@ -27,6 +27,7 @@ alias brightest='xbacklight -set 100'
 # Network aliases
 alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
 alias net-down='systemctl stop netctl-auto@wlp2s0'
+alias wpa_reconn='sudo pkill dhcpcd && sudo pkill wpa_supplicant; sudo wpa_supplicant -i wlp58s0 -Dnl80211 -c /etc/wpa_supplicant.conf'
 
 # Screen configuration aliases
 alias externmonitor='xrandr --auto --output LVDS1 --off'
@@ -107,6 +108,7 @@ alias glg='git log --graph --all --decorate'
 alias glw='watch --color git log --graph --all --decorate --color=always'
 alias gc='git commit'
 alias ga='git add'
+alias gau='git add -u'
 alias gd='git diff'
 alias gp='git push'
 alias gpom='git push origin master'
