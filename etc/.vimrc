@@ -186,6 +186,9 @@ nmap <leader>e :e#<CR>
 nnoremap <leader>b :ls<CR>:b<SPACE>
 nnoremap <leader>l :ls<CR>
 
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+
 "mistyped B->b autocorrect
 cnoreabbrev <expr> B ((getcmdtype() is# ':' && getcmdline() is# 'B')?('b'):('B'))
 
@@ -202,7 +205,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>w :w<CR>
 
-nnoremap <leader>s :%s
+nnoremap <leader>5 :%
+nnoremap <leader>s :mks! session.vim<CR>
 
 "map leader v to ctrl v
 nmap <leader>v <C-v>
@@ -212,6 +216,10 @@ nmap <leader>i <C-a>
 
 "map leader d = ctrl x (decrement)
 nmap <leader>d <C-x>
+
+"map for making quick x-y-z sequences in columns
+nnoremap <leader>x rxjryjrz
+nnoremap <leader>X rXjrYjrZ
 
 "maps for make/make error
 nmap <leader>m :w<CR>:make!<CR>
