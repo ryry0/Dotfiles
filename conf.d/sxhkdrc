@@ -4,21 +4,33 @@
 
 # gooogle
 super + shift + g
-	google-chrome-stable
+	google-chrome-unstable
 
-#dropdownish google keep
+#dropdownish google keep + hangouts
 F10
-	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
-	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
+	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
+	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
+	&& bspc node -t tiled) \
+	|| google-chrome-unstable --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
+
+shift + F10
+	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
+	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
 	&& bspc node -t fullscreen) \
-	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+	|| google-chrome-unstable --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
 
 
 F9
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
 	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
 	&& bspc node -t tiled) \
-	|| google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+	|| google-chrome-unstable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+
+shift + F9
+	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
+	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
+	&& bspc node -t fullscreen) \
+	|| google-chrome-unstable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
 super + space
 	urxvt
@@ -27,7 +39,7 @@ F3
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| (xdotool search --classname quake windowmap \
 	&& bspc node -t tiled) \
-	|| urxvt -name quake -e tmux
+	|| urxvt -name quake
 
 F4
 	xdotool search --onlyvisible --classname quake windowunmap \
