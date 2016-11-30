@@ -39,6 +39,7 @@
             ncurses
             x11
             mesa
+            SDL2
 
             ## uC utils
             avrdude
@@ -70,6 +71,7 @@
             mupdf
             calibre
             xournal
+            rdesktop
 
             ## ricing
             unclutter
