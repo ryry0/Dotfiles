@@ -53,6 +53,9 @@ set showcmd          "shows the current command on statusline
 "look for tags in current directory, then move up until root
 set tags=./tags;/
 
+"set path to current working directory
+set path=$PWD/**
+
 "filetype options
 filetype on
 filetype indent on
@@ -192,6 +195,9 @@ nnoremap <C-p> :prev<CR>
 "mistyped B->b autocorrect
 cnoreabbrev <expr> B ((getcmdtype() is# ':' && getcmdline() is# 'B')?('b'):('B'))
 
+"Map for relative filepath expansion
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 "conversion mappings
 command Edos e ++ff=dos
 command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
@@ -200,10 +206,17 @@ command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
 "clears all trailing whitespaces
 nmap <leader><TAB> :%s/\s\+$// <CR>
 
+
 "command line shortcuts
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>w :w<CR>
+
+"save as root
+nnoremap <leader>W :w !sudo tee %<CR>
+
+"mistyped Q->q autocorrect
+cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))
 
 nnoremap <leader>5 :%
 nnoremap <leader>s :mks! session.vim<CR>
@@ -287,7 +300,7 @@ autocmd BufNewFile,BufRead *.md set spell | set formatoptions+=t | set softtabst
 
 "Latex bindings
 "set auto spellcheck on latex files only
-autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t 
+autocmd BufNewFile,BufRead *.tex set spell | set formatoptions+=t
                         \| set textwidth=80 | LatAbbrev
 
 let g:tex_flavor = "latex"
