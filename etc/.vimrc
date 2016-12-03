@@ -186,8 +186,8 @@ nmap <leader>e :e#<CR>
 nnoremap <leader>b :ls<CR>:b<SPACE>
 nnoremap <leader>l :ls<CR>
 
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
+nnoremap <C-n> :next<CR>
+nnoremap <C-p> :prev<CR>
 
 "mistyped B->b autocorrect
 cnoreabbrev <expr> B ((getcmdtype() is# ':' && getcmdline() is# 'B')?('b'):('B'))
