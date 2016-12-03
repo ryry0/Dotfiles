@@ -171,11 +171,9 @@ vnoremap <leader>t <C-t>
 "X related buffer mappings
 noremap <leader>y "+y
 noremap <leader>Y "+Y
-noremap <leader>p "+p
 
 vnoremap <leader>y "+y
 vnoremap <leader>Y "+Y
-vnoremap <leader>p "+p
 
 "allows you to open command line history using q;
 nnoremap q; q:
@@ -206,6 +204,9 @@ command Enix e ++ff=dos<CR> :setlocal ff=unix<CR>
 "clears all trailing whitespaces
 nmap <leader><TAB> :%s/\s\+$// <CR>
 
+"window pane mappings
+nnoremap <leader>p <C-w>
+vnoremap <leader>p <C-w>
 
 "command line shortcuts
 nnoremap <leader>q :q<CR>
@@ -241,6 +242,7 @@ nmap <leader>N :cp<CR>
 
 "maps for indentation
 nmap <leader>{ =i{
+nmap <leader>[ =i{
 nmap <leader>= gg=G
 
 "maps for change commands
