@@ -184,7 +184,7 @@ noremap <leader>; g;g;
 "buffer related mappings
 "opens previous buffered file.
 nmap <leader>e :e#<CR>
-nnoremap <leader>b :ls<CR>:b<SPACE>
+nnoremap <leader>f :ls<CR>:b<SPACE>
 nnoremap <leader>l :ls<CR>
 
 nnoremap <C-n> :next<CR>
@@ -262,6 +262,7 @@ nnoremap vi[ %vi[
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
 
 "smooth scrolling mappings
+"nnoremap <C-E> :call SmoothScroll(1)<Enter>
 nnoremap <C-U> :call SmoothScroll(1)<Enter>
 nnoremap <C-D> :call SmoothScroll(0)<Enter>
 inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
@@ -285,8 +286,21 @@ autocmd VimResized * wincmd =
 "trailing whitespace is highlighted
 "no indent of namespaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+
+autocmd BufNewFile,BufRead *.ino setf c
+autocmd BufNewFile,BufRead *.pde setf c
+
 autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
                         \| set tabstop=2 | set shiftwidth=2
+                        \| match ExtraWhitespace '\s\+$' | set cino=N-s
+                        \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+                        \| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+                        \| set formatoptions+=t | set textwidth=80
+                        \| Cabbrev
+
+
+autocmd FileType java set nospell | set softtabstop=2
+                        \| set tabstop=4 | set shiftwidth=4
                         \| match ExtraWhitespace '\s\+$' | set cino=N-s
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
                         \| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
@@ -339,3 +353,12 @@ function SmoothScroll(up)
 endfunction
 
 
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+        let temp = @s
+        norm! gv"sy
+        let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+        let @s = temp
+endfunction
