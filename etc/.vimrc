@@ -307,6 +307,9 @@ autocmd FileType java set nospell | set softtabstop=2
                         \| set formatoptions+=t | set textwidth=80
                         \| Cabbrev
 
+autocmd FileType python setlocal nosmartindent | set textwidth=80
+autocmd FileType kivy setlocal nosmartindent | set textwidth=80
+
 autocmd Filetype make setlocal noexpandtab
 
 "Markdown Bindings
