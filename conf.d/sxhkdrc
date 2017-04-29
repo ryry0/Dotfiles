@@ -20,11 +20,11 @@ shift + F10
 	|| google-chrome-unstable --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
 
 
-F9
-	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
-	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
-	&& bspc node -t tiled) \
-	|| google-chrome-unstable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+#F9
+#	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
+#	|| (xdotool search --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowmap \
+#	&& bspc node -t tiled) \
+#	|| google-chrome-unstable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
 
 shift + F9
 	xdotool search --onlyvisible --classname crx_hmjkmjkepdijhoojdojkdfohbdgmmhki windowunmap \
@@ -38,14 +38,14 @@ super + space
 F3
 	xdotool search --onlyvisible --classname quake windowunmap \
 	|| (xdotool search --classname quake windowmap \
-	&& bspc node -t tiled) \
-	|| urxvt -name quake
+	|| urxvt -name quake \
+	&& bspc node -t tiled)
 
 F4
 	xdotool search --onlyvisible --classname quake windowunmap \
-	|| ( xdotool search --classname quake windowmap \
-	&& bspc node -t fullscreen) \
-	|| urxvt -name quake -e tmux
+	|| (xdotool search --classname quake windowmap \
+	|| urxvt -name quake -e tmux \
+	&& bspc node -t fullscreen)
 
 # make sxhkd reload its configuration files:
 super + Escape
