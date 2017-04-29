@@ -47,3 +47,7 @@ source ~/.zshcomp	# Source completions
 [ -f ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
         source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
         source ~/.zshhigh
+
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
+        source ~/.zshhigh
