@@ -99,6 +99,7 @@ alias mg='make gdb'
 alias mgr='make grind'
 alias mlc='make leak-check'
 alias mr='make run'
+alias mw='make win64'
 
 # Git aliases
 alias gch='git checkout'

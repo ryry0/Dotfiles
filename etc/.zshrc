@@ -1,11 +1,4 @@
 # Open X server when logging in to tty1, tmux on tty2, 256 color tmux in urxvt
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec startx
-
-elif [[ $(tty) = /dev/tty2 ]] ; then
-	sudo setfont ter-214n
-	tmux
-fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem
 # LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
@@ -51,3 +44,6 @@ source ~/.zshcomp	# Source completions
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
         source ~/.zshhigh
+
+# Change LS colors
+eval $(dircolors ~/.dircolors -b)

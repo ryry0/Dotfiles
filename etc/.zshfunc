@@ -10,6 +10,11 @@ function cd () {
 	builtin cd "$@" && ls --color=auto
 }
 
+function aeth () {
+        WD=$(pwd)
+        ssh ryan@localhost -p 10001 -t "cd $WD; zsh"
+}
+
 # This function stores the output of a command in a variable.
 function keep () {
 	kept=()
@@ -65,7 +70,7 @@ function mkcd {
 }
 
 function cgrep {
-	grep . *.{h,hpp,c,cc,cpp} | grep "$@" -i
+	grep . *.{h,hpp,c,cc,cpp,ino,pde} | grep "$@" -i
 }
 
 function theme {
