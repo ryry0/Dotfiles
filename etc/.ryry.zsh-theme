@@ -4,6 +4,7 @@ GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
 GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
 GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"
+GIT_PROMPT_STASH="%{$fg[yellow]%}SNUM%{$reset_color%}"
 GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}!%{$reset_color%}"
 GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}*%{$reset_color%}"
 GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}*%{$reset_color%}"
@@ -28,6 +29,11 @@ parse_git_state() {
   local NUM_BEHIND="$(git log --oneline '..@{u}' 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_BEHIND" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+  fi
+
+  local NUM_STASH="$(git stash list 2>/dev/null | wc -l)"
+  if [ "$NUM_STASH" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_STASH//NUM/$NUM_STASH}
   fi
 
   local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
