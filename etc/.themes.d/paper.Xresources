@@ -1,7 +1,7 @@
 ! vim: set filetype=xdefaults :
 ! PaperColor Theme
 URxvt.foreground: #4D4D4C
-URxvt.background: [90]#EEEEEE
+! URxvt.background: [90]#EEEEEE
 URxvt.borderColor: [90]#EEEEEE
 
 ! black
@@ -29,7 +29,7 @@ URxvt.borderColor: [90]#EEEEEE
 *color7: #4D4D4C
 *color15: #F5F5F5
 
-URxvt*font: xft:inconsolata:size=13:antialias=false
+URxvt*font: xft:inconsolata:size=13:antialias=true
 
 URxvt*colorBD:            #4D4D4C
 URxvt*cursorColor:        #6D878D
@@ -40,3 +40,6 @@ URxvt.depth: 32
 Xft.dpi: 144
 URxvt.scrollBar: false
 xterm*faceName:         Terminus:pixelsize=15
+
+URxvt*transparent: true
+URxvt*shading: 175
