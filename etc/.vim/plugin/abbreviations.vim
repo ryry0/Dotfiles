@@ -55,8 +55,13 @@ function! LatAbbrev()
         call Iab('begeqn','\begin{equation*}<CR><CR>\end{equation*}<ESC>kcc')
         call Iab('begaln','\begin{align*}<CR><CR>\end{align*}<ESC>kcc')
         call Iab('begend','\begin{}<CR>\end{}<ESC>k0f{ci{')
+        call Iab('begm','\begin{bmatrix}<CR>\end{bmatrix}<ESC>O')
         call Iab('sli','\includegraphics[page=,width=\textwidth]{\slides}<ESC>F,i')
         call Iab('slif','\includepdf[pages=]{\slides}<ESC>F=a')
+        call Iab('fj','{}<ESC>i')
+        call Iab('begad','\begin{aligned}<CR><CR>\end{aligned}<ESC>kcc')
+        call Iab('sl','\')
+        call Iab('$$$', '$$<CR>$$<ESC>O')
 endfunction
 
 command! Cabbrev call CAbbrev()

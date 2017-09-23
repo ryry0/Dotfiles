@@ -2,8 +2,8 @@
 " http://winterdom.com/2007/06/vimstatusline
 
 set ls=2 " Always show status line
-hi StatusLine ctermbg=black
-hi StatusLine ctermfg=gray
+hi StatusLine ctermbg=white
+hi StatusLine ctermfg=blue
 if has('statusline')
 	" Status line detail:
 	" %f     file path

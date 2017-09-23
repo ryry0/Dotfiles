@@ -99,6 +99,8 @@ else
         set undofile
         let g:tmux_navigator_no_mappings = 1
 
+        set t_Co=16
+        highlight LineNr ctermfg=cyan
         nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
         nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
         nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
@@ -289,6 +291,10 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
 autocmd BufNewFile,BufRead *.ino setf c
 autocmd BufNewFile,BufRead *.pde setf c
+
+autocmd BufNewFile,BufRead *.jl setf julia  | set syntax=julia
+
+autocmd FileType julia set syntax=julia
 
 autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
                         \| set tabstop=2 | set shiftwidth=2
