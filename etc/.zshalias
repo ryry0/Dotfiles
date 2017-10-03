@@ -126,6 +126,7 @@ alias grh='git reset --hard'
 alias grsuopa='git remote set-url origin --push --add'
 alias gcan='git commit --amend --no-edit'
 alias gst='git stash'
+alias gsub='gsub.sh'
 
 # elm aliases
 alias em='elm make'
