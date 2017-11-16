@@ -62,6 +62,12 @@ function! LatAbbrev()
         call Iab('begad','\begin{aligned}<CR><CR>\end{aligned}<ESC>kcc')
         call Iab('sl','\')
         call Iab('$$$', '$$<CR>$$<ESC>O')
+        call Iab('vec','\vec{')
+        call Iab('frac','\frac{}{b}<ESC>F{F{a')
+        call Iab('thet','\theta')
+        call Iab('tau','\tau')
+        call Iab('dvec','\dot{\vec{}}<ESC>F{a')
+        call Iab('ddvec','\ddot{\vec{}}<ESC>F{a')
 endfunction
 
 command! Cabbrev call CAbbrev()
