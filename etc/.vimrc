@@ -371,3 +371,6 @@ function! s:VSetSearch()
         let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
         let @s = temp
 endfunction
+
+hi Visual ctermbg=252
+
