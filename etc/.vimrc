@@ -372,4 +372,6 @@ function! s:VSetSearch()
         let @s = temp
 endfunction
 
-hi Visual ctermbg=238
+"hi Visual ctermbg=238 //for wsl
+hi Visual ctermbg=252
+"Fixed really dark highlight color.
