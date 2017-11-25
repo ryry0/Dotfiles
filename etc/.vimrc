@@ -116,7 +116,7 @@ map <ScrollWheelDown> <C-E>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap : :set norelativenumber \| set number<CR>:
+"nnoremap : :set norelativenumber \| set number<CR>:
 
 "sets intuitive word wrapped line movement
 nnoremap j gj
