@@ -1,3 +1,6 @@
+LPROMPT=''
+PROMPTTEMP=''
+
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}"
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
@@ -12,11 +15,19 @@ GIT_PROMPT_STAGED="%{$fg_bold[green]%}*%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 parse_git_branch() {
+  if [ -z "$1" ]; then
+  else
+    cd $1
+  fi
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
 
 # Show different symbols as appropriate for various Git repository states
 parse_git_state() {
+  if [ -z "$1" ]; then
+  else
+    cd $1
+  fi
 
   # Compose this value via multiple conditional appends.
   local GIT_STATE=""
@@ -61,8 +72,8 @@ parse_git_state() {
 
 # If inside a Git repository, print its branch and state
 git_prompt_string() {
-  local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX "
+  local git_where="$(parse_git_branch $1)"
+  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state $1)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX "
 }
 
 #########################
@@ -73,7 +84,7 @@ function battery_prompt() {
 	b=$(batt_remain)
 	if [ $b -gt 50 ] ; then
 		color='green'
-	elif [ $b -gt 20 ] ; then 
+	elif [ $b -gt 20 ] ; then
 		color='yellow'
 	else
 		color='red'
@@ -81,7 +92,7 @@ function battery_prompt() {
 	echo "[%{$fg[$color]%}$(batt_remain)%%%{$reset_color%}]"
 }
 
-function check_tmux() 
+function check_tmux()
 {
 	if [ $TERM = "linux" ] ; then
 		echo "[%{$fg[cyan]%}$(wpa_cli -i wlp2s0 status | sed -n 's/^ssid=//p')%{$reset_color%}]$(battery_prompt)[%{$fg[blue]%}%W%{$reset_color%}][%{$fg[blue]%}%t%{$reset_color%}][%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
@@ -107,6 +118,33 @@ function zle-line-finish {
 }
 zle -N zle-line-finish
 
-PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+git_prompt_async_set() {
+        echo ",$(git_prompt_string $1),"
+}
+
+if [[ ! -a ~/.zsh-async ]]; then
+  git clone -b 'v1.5.2' https://github.com/mafredri/zsh-async ~/.zsh-async
+fi
+
+if [[ -f ~/.zsh-async/async.zsh ]]; then
+        source ~/.zsh-async/async.zsh
+        async_init
+        async_start_worker git_prompt_worker -n
+        async_register_callback git_prompt_worker git_callback
+        async_job git_prompt_worker git_prompt_async_set $(pwd)
+        PROMPT="\${LPROMPT}%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+else
+        PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+fi
+
+git_callback() {
+        local output=$@
+        LPROMPT=$(echo $output | cut -d ',' -f 2)
+        async_job git_prompt_worker git_prompt_async_set $(pwd)
+}
+
 
 RPROMPT="\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
+
+TMOUT=1
+TRAPALRM() { zle reset-prompt }

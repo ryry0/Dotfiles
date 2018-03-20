@@ -46,4 +46,5 @@ source ~/.zshcomp	# Source completions
         source ~/.zshhigh
 
 # Change LS colors
+[ -f ~/.dircolors ] &&
 eval $(dircolors ~/.dircolors -b)
