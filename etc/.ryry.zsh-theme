@@ -138,8 +138,7 @@ else
 fi
 
 git_callback() {
-        local output=$@
-        LPROMPT=$(echo $output | cut -d ',' -f 2)
+        LPROMPT=$(echo $@ | cut -d ',' -f 2)
         async_job git_prompt_worker git_prompt_async_set $(pwd)
 }
 
