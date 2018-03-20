@@ -263,6 +263,7 @@ nnoremap vi[ %vi[
 
 "late parenthesis mapping. Surrounds visually selected text in parens
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>
+vnoremap <leader>c <Esc>`>a */<Esc>`<i/* <Esc>
 
 "smooth scrolling mappings
 "nnoremap <C-E> :call SmoothScroll(1)<Enter>
