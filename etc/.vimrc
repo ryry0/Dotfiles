@@ -75,15 +75,16 @@ endif
 
 "win32 specific mappings
 if has("win32")
+        set t_Co=256
         if has("gui_running")
-                set guifont=Consolas:h10:cANSI
+                set guifont=Consolas:h11:cANSI
                 "colorscheme slate
                 :set guioptions-=m  "remove menu bar
                 :set guioptions-=T  "remove toolbar
                 :set guioptions-=r  "remove right-hand scroll bar
                 :set guioptions-=L  "remove left-hand scroll bar
         endif
-        colorscheme zellner
+        colorscheme PaperColor
         set background=light
         nmap <silent> <A-k> :wincmd k<CR>
         nmap <silent> <A-j> :wincmd j<CR>
@@ -114,7 +115,7 @@ map <ScrollWheelDown> <C-E>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap : :set norelativenumber \| set number<CR>:
+"nnoremap : :set norelativenumber \| set number<CR>:
 
 "sets intuitive word wrapped line movement
 nnoremap j gj
@@ -365,3 +366,15 @@ function! s:VSetSearch()
         let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
         let @s = temp
 endfunction
+
+" Search in all currently opened buffers
+function! ClearQuickfixList()
+  call setqflist([])
+endfunction
+function! Vimgrepall(pattern)
+  call ClearQuickfixList()
+  exe 'bufdo vimgrepadd ' . a:pattern . ' %'
+  copen
+endfunction
+
+command! -nargs=1 Vim call Vimgrepall(<f-args>)
