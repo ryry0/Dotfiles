@@ -12,3 +12,7 @@ export PATH=/home/ryan/Dropbox/Programming/etc/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source ~/.zshalias
+
+if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
+        exec $(which zsh)
+fi
