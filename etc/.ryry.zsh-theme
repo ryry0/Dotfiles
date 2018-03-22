@@ -132,18 +132,23 @@ if [[ -f ~/.zsh-async/async.zsh ]]; then
         async_start_worker git_prompt_worker -n
         async_register_callback git_prompt_worker git_callback
         async_job git_prompt_worker git_prompt_async_set $(pwd)
-        PROMPT="\${LPROMPT}%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+        PROMPT="%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+        RPROMPT="\${LPROMPT}\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
 else
         PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+        RPROMPT="\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
 fi
 
 git_callback() {
         LPROMPT=$(echo $@ | cut -d ',' -f 2)
-        async_job git_prompt_worker git_prompt_async_set $(pwd)
+        #async_job git_prompt_worker git_prompt_async_set $(pwd)
 }
 
 
-RPROMPT="\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
+
+precmd() {
+        async_job git_prompt_worker git_prompt_async_set $(pwd)
+}
 
 TMOUT=1
 TRAPALRM() { zle reset-prompt }
