@@ -1,4 +1,7 @@
 xrdb -merge ~/.themes.d/paper.Xresources
+if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
+        xrdb -merge ~/.themes.d/verybig.Xresources
+fi
 #syncthing -no-browser &
 xkbcomp ~/.metacaps.xkb $DISPLAY 2> /dev/null
 #xbacklight -set 40 

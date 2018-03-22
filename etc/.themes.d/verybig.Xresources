@@ -1,0 +1,2 @@
+! vim: set filetype=xdefaults :
+URxvt*font: xft:inconsolata:size=23:antialias=true
