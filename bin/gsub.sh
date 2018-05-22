@@ -30,4 +30,11 @@ case $arg in
                 git push $2 HEAD:master
                 git checkout $CURR_BRANCH
         ;;
+
+        help)
+                echo "add <subtree name> <url>"
+                echo "update <subtree name>"
+                echo "commit <subtree name> <branch head/commit>"
+                echo "push <subtree name>"
+        ;;
 esac
