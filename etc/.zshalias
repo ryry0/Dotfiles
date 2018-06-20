@@ -145,3 +145,5 @@ alias -s c=vim
 alias -s hpp=vim
 alias -s h=vim
 
+# Windows interop
+alias ee='explorer.exe'
