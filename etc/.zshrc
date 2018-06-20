@@ -56,6 +56,10 @@ source ~/.zshcomp	# Source completions
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
         source ~/.zshhigh
 
+[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
+        source ~/.zshhigh
+
 # Change LS colors
 [ -f ~/.dircolors ] &&
 eval $(dircolors ~/.dircolors -b)
