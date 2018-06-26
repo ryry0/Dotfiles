@@ -138,9 +138,8 @@ alias ep='elm package'
 alias nix-clean='nix-env --delte-generations old; nix-collect-garbage -d; nix-store --gc'
 
 
-# Suffix aliases
+# Suffix aliases only for zsh
 if [ "$BASH_VERSION" = '' ]; then
-    echo "This is dash."
     alias -s tex=vim
     alias -s cpp=vim
     alias -s conf=vim
