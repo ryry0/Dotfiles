@@ -17,6 +17,7 @@ zsh: nix-store --gc
 zsh: dstat, strace (opensnoop), netcat, netstat, ngrep, tcpdump, perf, ftrace
 zsh: for i in $(ls); do foo; done
 zsh: until [ ]; do foo; done
+zsh: git stash save "label here"
 
 vim: Use ranges e.g. 90t. (copy line 90 to here).
 vim: zc/zo folding commands
