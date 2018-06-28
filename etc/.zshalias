@@ -128,6 +128,7 @@ alias grsuopa='git remote set-url origin --push --add'
 alias gcan='git commit --amend --no-edit'
 alias gst='git stash'
 alias gsub='gsub.sh'
+alias gsh='git show'
 
 # elm aliases
 alias em='elm make'
@@ -150,3 +151,16 @@ fi
 
 # Windows interop
 alias ee='explorer.exe'
+alias e.='ee .'
+alias winbat='cmd.exe /c'
+alias winps1='powershell.exe -Command'
+alias winpulldots='winbat "C:/Users/Ryan/Google Drive/Scripts/pull dotfiles local wsl.bat"'
+alias wintethermode='winbat "C:/Users/Ryan/Google Drive/Scripts/Tethermode.bat"'
+alias winuntethermode='winbat "C:/Users/Ryan/Google Drive/Scripts/Untethermode.bat"'
+alias winungamemode='winbat "C:/Users/Ryan/Google Drive/Scripts/Ungamemode.bat"'
+alias wingamemode='winbat "C:/Users/Ryan/Google Drive/Scripts/Gamemode.bat"'
+alias winkillfancybash='winbat "C:/Users/Ryan/Google Drive/Scripts/fancy bash killer.bat"'
+alias winnotify="winps1 'C:/Users/Ryan/Google\` Drive/Scripts/notify.ps1'"
+alias winld="ee 'C:\\Users\\Ryan\\Desktop\\Local Dump'"
+alias winva="ee 'C:\\Users\\Ryan\\Google Drive\\Work\\VA IT'"
+alias winw="ee 'C:\\Users\\Ryan\\Desktop\\Workspace\\'"
