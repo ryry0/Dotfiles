@@ -1,6 +1,10 @@
 # Open X server when logging in to tty1, tmux on tty2, 256 color tmux in urxvt
 
 if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
+        if [ $TERM = "rxvt-unicode" ] ; then
+                cd ~
+                exec tmux
+        fi 
 else
         if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
                 exec startx
