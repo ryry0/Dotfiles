@@ -130,6 +130,7 @@ alias gcan='git commit --amend --no-edit'
 alias gst='git stash'
 alias gsub='gsub.sh'
 alias gsh='git show'
+alias glf='git log --follow --all --decorate --graph --'
 
 # elm aliases
 alias em='elm make'
