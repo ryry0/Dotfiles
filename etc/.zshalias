@@ -45,6 +45,7 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias copy='rsync -aP'
 alias j='jobs'
+alias cleanswap='rm -vf ~/.temp/swp/*'
 
 alias jp='jump'
 alias mk='mark'
