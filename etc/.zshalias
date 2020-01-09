@@ -110,6 +110,7 @@ alias gl='git log'
 alias glo='git log --oneline'
 alias gls='git log --pretty=short'
 alias glg='git log --graph --all --decorate'
+alias glgd='git log --graph --decorate'
 alias glw='watch --color git log --graph --all --decorate --color=always'
 alias gc='git commit'
 alias ga='git add'
@@ -131,6 +132,9 @@ alias gst='git stash'
 alias gsub='gsub.sh'
 alias gsh='git show'
 alias glf='git log --follow --all --decorate --graph --'
+
+# project related aliases
+alias gdpsoc="git diff -- '*.c' '*.h'"
 
 # elm aliases
 alias em='elm make'
