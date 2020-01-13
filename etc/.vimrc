@@ -1,6 +1,7 @@
 syntax on
 set ignorecase  "ignore case in search patterns
 set smartcase   "override ignorecase if search has capital letters
+set complete-=i "don't scan included files.
 
 set incsearch
 set showmatch   "jump to matching bracket if new is inserted
@@ -33,6 +34,8 @@ vmap <2-LeftMouse> <nop>
 
 "use z= to use spellcheck
 set spelllang=en_us
+"use Ctrl-L in insert mode to fix a spellcheck error
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "formatting and indentation
 set lbr "don't break words in middle
