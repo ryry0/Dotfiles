@@ -70,6 +70,7 @@ alias zsh-tips='cat ~/.tips | grep -e "^zsh"'
 
 alias hex='printf "%x\n"'
 alias dec='printf "%d\n"'
+alias youtube2mp3='youtube-dl -x --audio-format mp3'
 
 # Tmux aliases
 alias ka='tmux kill-pane -a'
