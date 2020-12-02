@@ -67,3 +67,6 @@ source ~/.zshcomp	# Source completions
 # Change LS colors
 [ -f ~/.dircolors ] &&
 eval $(dircolors ~/.dircolors -b)
+
+# Connect to an external docker daemon
+export DOCKER_HOST=tcp://localhost:2375
