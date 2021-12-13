@@ -251,6 +251,8 @@ nmap <leader>{ =i{
 nmap <leader>[ =i{
 nmap <leader>= gg=G
 
+nmap <leader>r :so $MYVIMRC<CR>
+
 "maps for change commands
 nnoremap ci( %ci(
 nnoremap di( %di(
