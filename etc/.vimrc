@@ -327,6 +327,16 @@ autocmd FileType java set nospell | set softtabstop=2
 autocmd FileType python setlocal nosmartindent | set textwidth=80
 autocmd FileType kivy setlocal nosmartindent | set textwidth=80
 
+"formatoptions t auto-wrap text using textwidth
+autocmd BufNewFile,BufRead *.fs,*.fsi,*.fsx set filetype=fsharp 
+                        \| set tabstop=4 | set shiftwidth=4
+                        \| match ExtraWhitespace '\s\+$' | set cino=N-s
+                        \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+                        \| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+                        \| set formatoptions+=t | set textwidth=80
+ 
+autocmd BufNewFile,BufRead *.fsproj         set filetype=fsharp_project
+
 autocmd Filetype make setlocal noexpandtab
 
 "Markdown Bindings
