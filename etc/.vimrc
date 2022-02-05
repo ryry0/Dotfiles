@@ -278,8 +278,8 @@ vnoremap <leader>c <Esc>`>a */<Esc>`<i/* <Esc>
 "nnoremap <C-E> :call SmoothScroll(1)<Enter>
 nnoremap <C-U> :call SmoothScroll(1)<Enter>
 nnoremap <C-D> :call SmoothScroll(0)<Enter>
-inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
-inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
+"inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
+"inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
 
 "relative number toggle map
 nnoremap <f5> :call NumberToggle() <cr>
