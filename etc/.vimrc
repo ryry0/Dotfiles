@@ -253,6 +253,10 @@ nmap <leader>= gg=G
 
 nmap <leader>r :so $MYVIMRC<CR>
 
+"zig config
+nmap <leader>z :call zig#fmt#Format()<CR>
+let g:zig_fmt_autosave = 0
+
 "maps for change commands
 nnoremap ci( %ci(
 nnoremap di( %di(
