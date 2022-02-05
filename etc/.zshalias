@@ -102,6 +102,7 @@ alias mgr='make grind'
 alias mlc='make leak-check'
 alias mr='make run'
 alias mw='make win64'
+alias mmr='make && make run'
 
 # Git aliases
 alias gch='git checkout'
@@ -118,7 +119,7 @@ alias ga='git add'
 alias gau='git add -u'
 alias gd='git diff'
 alias gp='git push'
-alias gpom='git push origin master'
+alias gpom='git push origin main'
 alias gpo='git push origin'
 alias gpoa='git push origin --all'
 alias gdhh='noglob git diff HEAD^ HEAD'
@@ -133,6 +134,7 @@ alias gst='git stash'
 alias gsub='gsub.sh'
 alias gsh='git show'
 alias glf='git log --follow --all --decorate --graph --'
+alias gdisae='git diff --ignore-space-at-eol'
 
 # project related aliases
 alias gdpsoc="git diff -- '*.c' '*.h'"
@@ -143,7 +145,7 @@ alias er='elm reactor'
 alias ep='elm package'
 
 # nixos clean alias
-alias nix-clean='nix-env --delte-generations old; nix-collect-garbage -d; nix-store --gc'
+alias nix-clean='nix-env --delete-generations old; nix-collect-garbage -d; nix-store --gc'
 
 
 # Suffix aliases only for zsh
@@ -155,6 +157,20 @@ if [ "$BASH_VERSION" = '' ]; then
     alias -s hpp=vim
     alias -s h=vim
 fi
+
+# Docker aliases
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias drm='docker rm'
+alias di='docker image'
+alias dih='docker image history'
+alias dl='docker logs'
+alias dpsaids="docker ps -a | tr -s ' ' | cut -d ' ' -f 1 | tail -n +2"
+alias dpsaidsrm="docker ps -a | tr -s ' ' | cut -d ' ' -f 1 | tail -n +2 | xargs docker rm"
+alias drmall='dpsaids | xargs docker rm'
+alias dils='docker image ls'
+alias diids="docker image ls | tr -s ' ' | cut -d ' ' -f 3 | tail -n +2"
+alias dinoneids="docker image ls | grep none | tr -s ' ' | cut -d ' ' -f 3"
 
 # Windows interop
 alias ee='explorer.exe'
