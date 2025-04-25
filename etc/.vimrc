@@ -181,6 +181,10 @@ noremap <leader>Y "+Y
 vnoremap <leader>y "+y
 vnoremap <leader>Y "+Y
 
+"naturalish copy paste.
+inoremap <C-v> <C-o>"+P
+vnoremap <C-c> "+y
+
 "allows you to open command line history using q;
 nnoremap q; q:
 
@@ -307,7 +311,7 @@ autocmd BufNewFile,BufRead *.jl setf julia  | set syntax=julia
 
 autocmd FileType julia set syntax=julia
 
-autocmd FileType elm,arduino,c,cpp set nospell | set softtabstop=2
+autocmd FileType haskell,elm,arduino,c,cpp,systemverilog set nospell | set softtabstop=2
                         \| set tabstop=2 | set shiftwidth=2
                         \| match ExtraWhitespace '\s\+$' | set cino=N-s
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
