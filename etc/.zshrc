@@ -1,19 +1,25 @@
 # Open X server when logging in to tty1, tmux on tty2, 256 color tmux in urxvt
 
 if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
-        if [ $TERM = "rxvt-unicode" ] ; then
-                cd ~
+        if [ $TERM = "foot" ] ; then
                 exec tmux
-        fi 
+        fi
 else
         if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-                exec startx
+          exec hyprland
+                # exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+
 
         elif [[ $(tty) = /dev/tty2 ]] ; then
-                sudo setfont ter-214n
+                sudo setfont ter-224n
                 tmux
         fi
+
 fi
+
+#if [ $TERM = "foot" ] ; then
+#        exec tmux -2
+#fi
 
 # The following fixes the libswmhackso.0.0 cannot be preloaded problem
 # LD_PRELOAD="/usr/lib/libswmhack.so.0.0"
@@ -45,6 +51,10 @@ HISTSIZE=10000
 SAVEHIST=9000
 HISTFILE=~/.zsh_history
 
+# Change LS colors
+[ -f ~/.dircolors ] &&
+eval $(dircolors ~/.dircolors -b)
+
 # Load the rest of the options
 source ~/.zshopts 	# Source options
 source ~/.zshkeys	# Source keybindings
@@ -65,9 +75,6 @@ source ~/.zshcomp	# Source completions
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
         source ~/.zshhigh
 
-# Change LS colors
-[ -f ~/.dircolors ] &&
-eval $(dircolors ~/.dircolors -b)
 
 # Connect to an external docker daemon
 export DOCKER_HOST=tcp://localhost:2375

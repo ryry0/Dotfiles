@@ -12,6 +12,7 @@ bindkey '^K' backward-kill-line
 bindkey '^Y' yank
 bindkey '^N' down-line-or-history
 bindkey '^P' up-line-or-history
+bindkey '^?' backward-delete-char
 
 bindkey '^[[Z' reverse-menu-complete
 

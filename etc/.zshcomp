@@ -11,7 +11,7 @@ compctl -K _rpaca rpaca
 # Completion styles
 zstyle ':completion:*:*:*:*:*' menu select	# turns on colors in selection
 eval $(dircolors) # set colors for ls
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}		# ls colors
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} #"no=48;5;153;1"		# ls colors
 
 # match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

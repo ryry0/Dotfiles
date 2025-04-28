@@ -20,10 +20,10 @@ alias reboot='sudo reboot'
 alias sus='systemctl suspend'
 
 # Brightness aliases
-alias dim='xbacklight -dec 20'
-alias bright='xbacklight -inc 20'
-alias dimmest='xbacklight -set 3'
-alias brightest='xbacklight -set 100'
+alias dim='sudo xbacklight -dec 20'
+alias bright='sudo xbacklight -inc 20'
+alias dimmest='sudo xbacklight -set 3'
+alias brightest='sudo xbacklight -set 100'
 
 # Network aliases
 alias reconnect='systemctl restart netctl-auto@wlp2s0.service'
@@ -188,3 +188,6 @@ alias winnotify="winps1 'C:/Users/Ryan/Google\` Drive/Scripts/notify.ps1'"
 alias winld="ee 'C:\\Users\\Ryan\\Desktop\\Local Dump'"
 alias winva="ee 'C:\\Users\\Ryan\\Google Drive\\Work\\VA IT'"
 alias winw="ee 'C:\\Users\\Ryan\\Desktop\\Workspace\\'"
+
+# notifications.
+alias fin='notify-send -u low -t 10000'

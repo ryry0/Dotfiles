@@ -20,3 +20,13 @@ echo "Installing vim directories"
 install -dv ~/.temp/bak
 install -dv ~/.temp/swp
 
+ln -s ~/usr/conf.d/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -s ~/usr/conf.d/foot.ini ~/.config/foot/foot.ini
+ln -s ~/usr/conf.d/dunstrc ~/.config/dunst/dunstrc
+ln -s ~/usr/conf.d/wofi/config ~/.config/wofi/config
+ln -s ~/usr/conf.d/wofi/style.css ~/.config/wofi/style.css
+ln -s ~/usr/conf.d/cava/config ~/.config/cava/config
+ln -s ~/usr/conf.d/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+ln -s ~/usr/conf.d/waybar/config ~/.config/waybar/config
+ln -s ~/usr/conf.d/waybar/style.css ~/.config/waybar/style.css
+
