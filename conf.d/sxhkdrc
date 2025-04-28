@@ -7,17 +7,17 @@ alt + shift + g
 	chromium
 
 #dropdownish google keep + hangouts
-F10
-	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
-	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
-	&& bspc node -t tiled) \
-	|| chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
-
-shift + F10
-	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
-	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
-	&& bspc node -t fullscreen) \
-	|| chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
+# #F10
+# 	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
+# 	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
+# 	&& bspc node -t tiled) \
+# 	|| chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
+# 
+# shift + F10
+# 	xdotool search --onlyvisible --classname crx_knipolnnllmklapflnccelgolnpehhpl windowunmap \
+# 	|| (xdotool search --classname crx_knipolnnllmklapflnccelgolnpehhpl windowmap \
+# 	&& bspc node -t fullscreen) \
+# 	|| chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
 
 
 #F9
@@ -122,7 +122,7 @@ alt + shift + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-alt + shift + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # preselect the direction
