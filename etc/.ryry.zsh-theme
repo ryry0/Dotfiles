@@ -78,7 +78,7 @@ git_prompt_string() {
 
 #########################
 
-function batt_remain() { echo "$(acpi | cut -f2 -d ',' | grep -oE "[[:digit:]]{1,}" )"}
+function batt_remain() { echo "$(cat /sys/class/power_supply/BAT0/capacity)"}
 
 function battery_prompt() {
 	b=$(batt_remain)
@@ -95,7 +95,7 @@ function battery_prompt() {
 function check_tmux()
 {
 	if [ $TERM = "linux" ] ; then
-		echo "[%{$fg[cyan]%}$(wpa_cli -i wlp2s0 status | sed -n 's/^ssid=//p')%{$reset_color%}]$(battery_prompt)[%{$fg[blue]%}%W%{$reset_color%}][%{$fg[blue]%}%t%{$reset_color%}][%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
+		echo "[%{$fg[cyan]%}$(iwctl station wlan0 show | grep network | tr -s ' ' | cut -d ' ' -f 4)%{$reset_color%}]$(battery_prompt)[%{$fg[blue]%}%W%{$reset_color%}][%{$fg[blue]%}%t%{$reset_color%}][%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
 	else #only display host name when over ssh
 		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 			echo "[%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}]"
@@ -123,7 +123,7 @@ git_prompt_async_set() {
 }
 
 if [[ ! -a ~/.zsh-async ]]; then
-  git clone -b 'v1.5.2' https://github.com/mafredri/zsh-async ~/.zsh-async
+  git clone -b 'v1.8.6' https://github.com/mafredri/zsh-async ~/.zsh-async
 fi
 
 if [[ -f ~/.zsh-async/async.zsh ]]; then
@@ -151,4 +151,8 @@ precmd() {
 }
 
 TMOUT=1
-TRAPALRM() { zle reset-prompt }
+TRAPALRM() { 
+        if [ "$WIDGET" != "expand-or-complete" ]; then
+                zle reset-prompt 
+        fi
+}
