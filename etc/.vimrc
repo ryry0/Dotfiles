@@ -95,6 +95,16 @@ if has("win32")
         nmap <silent> <A-l> :wincmd l<CR>
         set noswapfile
 else
+        if has("gui_running")
+                set guifont=inconsolata\ 12
+                "colorscheme slate
+                :set guioptions-=m  "remove menu bar
+                :set guioptions-=T  "remove toolbar
+                :set guioptions-=r  "remove right-hand scroll bar
+                :set guioptions-=L  "remove left-hand scroll bar
+        colorscheme PaperColor
+        endif
+
         "moves the dir for swap files to ~/.swp
         "having trailing // forces file names to be unique
         "This is so I don't litter gdrive and dboxx with .swp files anymore
@@ -311,7 +321,7 @@ autocmd BufNewFile,BufRead *.jl setf julia  | set syntax=julia
 
 autocmd FileType julia set syntax=julia
 
-autocmd FileType haskell,elm,arduino,c,cpp,systemverilog set nospell | set softtabstop=2
+autocmd FileType haskell,elm,arduino,c,cpp,systemverilog,json set nospell | set softtabstop=2
                         \| set tabstop=2 | set shiftwidth=2
                         \| match ExtraWhitespace '\s\+$' | set cino=N-s
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -320,7 +330,7 @@ autocmd FileType haskell,elm,arduino,c,cpp,systemverilog set nospell | set softt
                         \| Cabbrev
 
 
-autocmd FileType java set nospell | set softtabstop=2
+autocmd FileType java,javascript set nospell | set softtabstop=2
                         \| set tabstop=4 | set shiftwidth=4
                         \| match ExtraWhitespace '\s\+$' | set cino=N-s
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
