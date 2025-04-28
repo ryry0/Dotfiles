@@ -55,7 +55,8 @@
   },
   "custom/cava_mviz" : {
     "exec" : "~/usr/bin/WaybarCava.sh",
-    "format" : " {} "
+    "format" : " {} ",
+    "tooltip" : false
   },
   "cava" : {
     "hide_on_silence" : false,
