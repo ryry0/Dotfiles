@@ -1,4 +1,8 @@
 #!/bin/env zsh
+#
+if [ -z $(pidof hyprpaper) ]; then
+        hyprpaper & sleep 1s;
+fi;
 
 hyprctl hyprpaper unload all
 # Sets a random wallpaper with hyprpaper
