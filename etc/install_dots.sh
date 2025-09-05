@@ -36,3 +36,4 @@ ln -s ~/usr/conf.d/cava/config ~/.config/cava/config
 ln -s ~/usr/conf.d/waybar/config ~/.config/waybar/config
 ln -s ~/usr/conf.d/waybar/style.css ~/.config/waybar/style.css
 
+ln -s ~/usr/conf.d/wlogout ~/.config/wlogout
