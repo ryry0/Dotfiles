@@ -18,7 +18,7 @@
     "custom/gpuinfo", "network", "custom/monitorbrightness"],
   "modules-right" :
   ["tray",
-    "idle_inhibitor", "clock", "custom/dunst"],
+    "idle_inhibitor", "clock", "custom/dunst", "custom/bigmode",  "custom/power"],
 
   "custom/notification" : {
     "tooltip" : false,
@@ -43,9 +43,18 @@
 
   "custom/monitorbrightness" : {
     "format" : " \uf522  ",
-    "on-click" : "ddcutil -d 1 setvcp 10 + 10",
-    "on-click-right" : "ddcutil -d 1 setvcp 10 - 10"
+    "on-click" : "ddcutil -d 1 setvcp 10 + 2",
+    "on-click-right" : "ddcutil -d 1 setvcp 10 - 2",
+    "tooltip" : false
   },
+
+  "custom/bigmode" : {
+    "format" : " | \uf055 ",
+    "on-click" : "git -C ~/usr checkout bigmode",
+    "on-click-right" : "git -C ~/usr checkout master",
+    "tooltip" : false
+  },
+
 
   "custom/colour-temperature" : {
     "format" : "{} ",
@@ -271,10 +280,10 @@
   },
 
   "custom/power" : {
-    "format" : "{}",
+    "format" : "| {}",
     "on-click" : "wlogout -b 4",
     "interval" : 86400,
-    "tooltip" : true
+    "tooltip" : false
   },
 
   "hyprland/submap": {
