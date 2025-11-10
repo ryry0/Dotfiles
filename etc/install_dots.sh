@@ -37,3 +37,4 @@ ln -s ~/usr/conf.d/waybar/config ~/.config/waybar/config
 ln -s ~/usr/conf.d/waybar/style.css ~/.config/waybar/style.css
 
 ln -s ~/usr/conf.d/wlogout ~/.config/wlogout
+ln -s ~/usr/conf.d/nvim ~/.config/nvim
