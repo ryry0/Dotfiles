@@ -29,6 +29,7 @@ export SUDO_EDITOR="$(which vim)"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 # support colors in less
