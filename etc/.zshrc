@@ -6,6 +6,7 @@ if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null; then
         fi
 else
         if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+	  eval $(keychain --eval id_ed25519)
           exec hyprland
                 # exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 
@@ -16,6 +17,8 @@ else
         fi
 
 fi
+
+export SSH_AUTH_SOCK
 
 #if [ $TERM = "foot" ] ; then
 #        exec tmux -2
