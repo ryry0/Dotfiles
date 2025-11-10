@@ -44,6 +44,8 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+export XDG_SCREENSHOTS_DIR=~/screenshots
+
 # Set theme
 autoload -U colors && colors
 
