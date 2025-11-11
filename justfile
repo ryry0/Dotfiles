@@ -1,4 +1,5 @@
 arch:
+	sudo pacman -S --needed - < $PWD/arch/pkglist.txt
 
 # dotfiles to link
 zshrc:
