@@ -1,5 +1,6 @@
 arch:
 
+# dotfiles to link
 zshrc:
 	ln -sf $PWD/zsh/.zshrc ~/.zshrc
 
@@ -18,7 +19,10 @@ hypr:
 foot:
 	ln -sf $PWD/foot ~/.config/foot
 
-link: zshrc git nvim nu hypr foot
+wofi:
+	ln -sf $PWD/wofi ~/.config/wofi
+
+link: zshrc git nvim nu hypr foot wofi
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
