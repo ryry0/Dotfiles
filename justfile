@@ -4,6 +4,7 @@ link:
 	ln -sf $PWD/nvim ~/.config/nvim
 	ln -sf $PWD/nu/config.nu ~/.config/nushell/config.nu
 	ln -sf $PWD/hypr ~/.config/hypr
+	ln -sf $PWD/foot ~/.config/foot
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
