@@ -23,3 +23,6 @@ alias gfa = git fetch --all
 
 # vi aliases
 alias vi = nvim
+
+# jobs
+alias fg = job unfreeze
