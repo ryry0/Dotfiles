@@ -5,5 +5,4 @@
 #   <context or intent>
 #
 # types:
-#   add, fix, refactor, docs, test, experiment, remove,
-#   rename, optimize, simplify, milestone
+#   add, fix, refactor, docs, test, chore
