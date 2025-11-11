@@ -23,7 +23,10 @@ foot:
 wofi:
 	ln -sf $PWD/wofi ~/.config/wofi
 
-link: zshrc git nvim nu hypr foot wofi
+waybar:
+	ln -sf $PWD/waybar ~/.config/waybar
+
+link: zshrc git nvim nu hypr foot wofi waybar
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
