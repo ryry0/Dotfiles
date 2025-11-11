@@ -27,3 +27,6 @@ link: zshrc git nvim nu hypr foot wofi
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
+
+ff-ultima:
+	bash <(curl -s https://raw.githubusercontent.com/soulhotel/git-userChrome/main/scripts/gituserChrome.sh)
