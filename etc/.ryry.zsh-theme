@@ -126,18 +126,18 @@ if [[ ! -a ~/.zsh-async ]]; then
   git clone -b 'v1.8.6' https://github.com/mafredri/zsh-async ~/.zsh-async
 fi
 
-if [[ -f ~/.zsh-async/async.zsh ]]; then
-        source ~/.zsh-async/async.zsh
-        async_init
-        async_start_worker git_prompt_worker -n
-        async_register_callback git_prompt_worker git_callback
-        async_job git_prompt_worker git_prompt_async_set $(pwd)
+#if [[ -f ~/.zsh-async/async.zsh ]]; then
+#       source ~/.zsh-async/async.zsh
+#       async_init
+#       async_start_worker git_prompt_worker -n
+#       async_register_callback git_prompt_worker git_callback
+#       async_job git_prompt_worker git_prompt_async_set $(pwd)
+#       PROMPT="%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
+#       RPROMPT="\${LPROMPT}\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
+#else
         PROMPT="%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
-        RPROMPT="\${LPROMPT}\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
-else
-        PROMPT="\$(git_prompt_string)%{$fg[cyan]%}%1~ %{$fg[blue]%}%#%{$reset_color%}>"
-        RPROMPT="\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
-fi
+        RPROMPT="\$(git_prompt_string)\${vim_mode}%(1j.[%{$fg[yellow]%}%j%{$reset_color%}].)%(?..[%{$fg[red]%}%?%{$reset_color%}])$(check_tmux)"
+#fi
 
 git_callback() {
         LPROMPT=$(echo $@ | cut -d ',' -f 2)
@@ -147,7 +147,7 @@ git_callback() {
 
 
 precmd() {
-        async_job git_prompt_worker git_prompt_async_set $(pwd)
+        #async_job git_prompt_worker git_prompt_async_set $(pwd)
 }
 
 TMOUT=1

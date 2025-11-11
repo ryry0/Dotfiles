@@ -44,7 +44,14 @@ function! CAbbrev()
         call Iab('intmainb', 'int main() {<CR>}<ESC>O')
         call Iab('bb', '{<CR>}<ESC>O')
         call Iab('ifnd', '#ifndef<CR>#define<CR>#endif<ESC>2kA')
+        call Iab('pp', '()<ESC>hi')
 endfunction
+ 
+"Rust abbreviations :
+function! RAbbrev()
+        call Iab('bb', '{<CR>}<ESC>O')
+endfunction
+
 
 "Latex abbreviations :
 function! LatAbbrev()

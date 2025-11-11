@@ -148,6 +148,11 @@ require("lazy").setup({
         { "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
         { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
       },
+      config = function()
+        require("spider").setup {
+          skipInsignificantPunctuation = false,
+        }
+      end,
     },
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -403,3 +408,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#89b4fa", fg = "#1e1e2e" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#45475a", fg = "#6c7086" })
 
+-- vim autocomplete
+vim.opt.wildmenu = true
+vim.opt.wildmode = { "list:longest", "full" }

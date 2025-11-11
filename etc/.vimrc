@@ -321,7 +321,7 @@ autocmd BufNewFile,BufRead *.jl setf julia  | set syntax=julia
 
 autocmd FileType julia set syntax=julia
 
-autocmd FileType haskell,elm,arduino,c,cpp,systemverilog,json set nospell | set softtabstop=2
+autocmd FileType haskell,svelte,elm,arduino,c,cpp,systemverilog,json set nospell | set softtabstop=2
                         \| set tabstop=2 | set shiftwidth=2
                         \| match ExtraWhitespace '\s\+$' | set cino=N-s
                         \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -329,6 +329,13 @@ autocmd FileType haskell,elm,arduino,c,cpp,systemverilog,json set nospell | set 
                         \| set formatoptions+=t | set textwidth=80
                         \| Cabbrev
 
+autocmd FileType rust set nospell
+                        \| set tabstop=4 | set shiftwidth=4 | set expandtab
+                        \| match ExtraWhitespace '\s\+$' | set cino=N-s
+                        \| autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+                        \| autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+                        \| set formatoptions+=t | set textwidth=100
+                        \| Cabbrev
 
 autocmd FileType java,javascript set nospell | set softtabstop=2
                         \| set tabstop=4 | set shiftwidth=4

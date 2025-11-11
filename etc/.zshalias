@@ -5,8 +5,9 @@ alias sudo='nocorrect sudo '
 alias pacman='sudo pacman --color=auto'
 alias rpaca='sudo rpaca'
 alias pamcan='pacman'
-alias vi='vim'
+alias vi='nv'
 alias vis='vi -S session.vim'
+alias nv='nvim'
 alias matlab='matlab -nodesktop -nosplash'
 alias gdb='gdb -tui -q'
 alias ..='cd ..'
@@ -94,16 +95,17 @@ alias amke='make'
 alias mkea='make'
 alias m='make'
 alias mu='make upload'
-alias mc='make clean'
-alias mcm='make clean && make'
-alias mcmu='make clean && make && make upload'
-alias mg='make gdb'
-alias mgr='make grind'
-alias mlc='make leak-check'
+#alias mc='make clean'
+#alias mcm='make clean && make'
+#alias mcmu='make clean && make && make upload'
+#alias mg='make gdb'
+#alias mgr='make grind'
+#alias mlc='make leak-check'
 alias mr='make run'
 alias mw='make win64'
 alias mmr='make && make run'
 alias mt='make test'
+alias mci='make ci'
 
 # Git aliases
 alias gch='git checkout'
@@ -188,6 +190,11 @@ alias winnotify="winps1 'C:/Users/Ryan/Google\` Drive/Scripts/notify.ps1'"
 alias winld="ee 'C:\\Users\\Ryan\\Desktop\\Local Dump'"
 alias winva="ee 'C:\\Users\\Ryan\\Google Drive\\Work\\VA IT'"
 alias winw="ee 'C:\\Users\\Ryan\\Desktop\\Workspace\\'"
+
+# rust aliases
+alias cr='cargo run --'
+alias crr='cargo run --release --'
+alias rd='rustup doc'
 
 # notifications.
 alias fin='notify-send -u low -t 10000'
