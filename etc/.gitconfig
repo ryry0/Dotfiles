@@ -1,0 +1,10 @@
+[user]
+	email = ryan.david.reyes@gmail.com
+	name = Ryan Reyes
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[commit]
+	template = /home/ryan/usr/conf.d/gitmessage.txt
+	verbose = true
