@@ -22,6 +22,10 @@ alias gpom = git push origin main
 
 alias gfa = git fetch --all
 
+# cargo aliases
+alias cr = cargo run --
+alias crr = cargo run --release --
+
 # vi aliases
 alias vi = nvim
 
