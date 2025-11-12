@@ -1,4 +1,4 @@
-arch:
+inst-arch:
 	sudo pacman -S --needed - < $PWD/arch/pkglist.txt
 
 upd-arch:
@@ -35,7 +35,10 @@ dunst:
 	mkdir -p ~/.config/dunst
 	ln -sf $PWD/dunst/dunstrc ~/.config/dunst/dunstrc
 
-link: zshrc git nvim nu hypr foot wofi waybar dunst
+tmux:
+	ln -sf $PWD/tmux/.tmux.conf ~/.tmux.conf
+
+link: zshrc git nvim nu hypr foot wofi waybar dunst tmux
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
