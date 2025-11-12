@@ -26,6 +26,7 @@ firefoxpwa
 flex
 foot
 freerdp
+fzf
 gawk
 gcc
 gdb
