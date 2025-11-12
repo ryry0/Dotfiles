@@ -1,6 +1,11 @@
 arch:
 	sudo pacman -S --needed - < $PWD/arch/pkglist.txt
 
+upd-arch:
+	sudo pacman -Qqe > $PWD/arch/pkglist.txt
+	git add $PWD/arch/pkglist.txt
+	git commit -m "chore: updated arch pkglist."
+
 # dotfiles to link
 zshrc:
 	ln -sf $PWD/zsh/.zshrc ~/.zshrc
