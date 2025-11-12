@@ -9,6 +9,7 @@ alias gs = git status
 
 alias gd = git diff
 alias gdc = git diff --cached
+alias gdhh = git diff HEAD^ HEAD
 
 alias ga = git add
 alias gau = git add -u
