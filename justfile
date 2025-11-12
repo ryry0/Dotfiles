@@ -26,7 +26,11 @@ wofi:
 waybar:
 	ln -sf $PWD/waybar ~/.config/waybar
 
-link: zshrc git nvim nu hypr foot wofi waybar
+dunst:
+	mkdir -p ~/.config/dunst
+	ln -sf $PWD/dunst/dunstrc ~/.config/dunst/dunstrc
+
+link: zshrc git nvim nu hypr foot wofi waybar dunst
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
