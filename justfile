@@ -38,7 +38,10 @@ dunst:
 tmux:
 	ln -sf $PWD/tmux/.tmux.conf ~/.tmux.conf
 
-link: zshrc git nvim nu hypr foot wofi waybar dunst tmux
+wlogout:
+	ln -sf $PWD/wlogout ~/.config/wlogout
+
+link: zshrc git nvim nu hypr foot wofi waybar dunst tmux wlogout
 
 keyd:
 	cp $PWD/keyd/default.conf /etc/keyd/default.conf
