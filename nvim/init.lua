@@ -64,7 +64,7 @@ require("lazy").setup({
       dependencies = { "nvim-treesitter/nvim-treesitter" },
       config = function()
         require("nvim-treesitter.configs").setup {
-          ensure_installed = { "gdscript", "wgsl", "c", "rust", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+          ensure_installed = { "just", "nu", "gdscript", "wgsl", "c", "rust", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
           highlight = { enable = true },
         }
         local rainbow = require "rainbow-delimiters"
