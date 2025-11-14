@@ -1,50 +1,75 @@
+# install yay in $PWD/build
+# cardamom chai git clone in /build when mature, then link
+# use nohup to start something that won's stop
+
+[default]
+list:
+	just -l
+
+[group('install')]
 inst-arch:
 	sudo pacman -S --needed - < $PWD/arch/pkglist.txt
+	# install yay
 
+[group('install')]
 upd-arch:
 	sudo pacman -Qqe > $PWD/arch/pkglist.txt
 	git add $PWD/arch/pkglist.txt
 	git commit -m "chore: updated arch pkglist."
 
-# dotfiles to link
-zshrc:
+[group('link')]
+link-zshrc:
 	ln -sf $PWD/zsh/.zshrc ~/.zshrc
 
-git:
+[group('link')]
+link-git:
 	ln -sf $PWD/git/.gitconfig ~/.gitconfig
 
-nvim:
+[group('link')]
+link-nvim:
 	ln -sf $PWD/nvim ~/.config/nvim
 
-nu:
+[group('link')]
+link-nu:
 	ln -sf $PWD/nu/config.nu ~/.config/nushell/config.nu
 
-hypr:
+[group('link')]
+link-hypr:
 	ln -sf $PWD/hypr ~/.config/hypr
 
-foot:
+[group('link')]
+link-foot:
 	ln -sf $PWD/foot ~/.config/foot
 
-wofi:
+[group('link')]
+link-wofi:
 	ln -sf $PWD/wofi ~/.config/wofi
 
-waybar:
+[group('link')]
+link-waybar:
 	ln -sf $PWD/waybar ~/.config/waybar
 
-dunst:
+[group('link')]
+link-dunst:
 	mkdir -p ~/.config/dunst
 	ln -sf $PWD/dunst/dunstrc ~/.config/dunst/dunstrc
 
-tmux:
+[group('link')]
+link-tmux:
 	ln -sf $PWD/tmux/.tmux.conf ~/.tmux.conf
 
-wlogout:
+[group('link')]
+link-wlogout:
 	ln -sf $PWD/wlogout ~/.config/wlogout
 
-link: zshrc git nvim nu hypr foot wofi waybar dunst tmux wlogout
+# link dotfiles
+[group('link')]
+link: link-zshrc link-git link-nvim link-nu link-hypr link-foot link-wofi link-waybar link-dunst link-tmux link-wlogout
 
+[group('install')]
 keyd:
-	cp $PWD/keyd/default.conf /etc/keyd/default.conf
+	sudo cp $PWD/keyd/default.conf /etc/keyd/default.conf
 
+[group('install')]
 ff-ultima:
 	bash <(curl -s https://raw.githubusercontent.com/soulhotel/git-userChrome/main/scripts/gituserChrome.sh)
