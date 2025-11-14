@@ -73,3 +73,29 @@ keyd:
 [group('install')]
 ff-ultima:
 	bash <(curl -s https://raw.githubusercontent.com/soulhotel/git-userChrome/main/scripts/gituserChrome.sh)
+
+[group('edit')]
+hypr:
+	nvim $PWD/hypr/hyprland.conf
+
+alias nvim := vimrc
+
+[group('edit')]
+vimrc:
+	nvim $PWD/nvim/init.lua
+
+[group('edit')]
+nu:
+	nvim $PWD/nu/config.nu
+
+[group('edit')]
+just:
+	nvim $PWD/justfile
+
+[group('edit')]
+waybar:
+	nvim -c "setf json" $PWD/waybar/config
+
+[group('edit')]
+tmux:
+	nvim $PWD/tmux/.tmux.conf
